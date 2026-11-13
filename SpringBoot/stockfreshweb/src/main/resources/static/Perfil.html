@@ -1,124 +1,109 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Locatario - StockFresh</title>
-    <!-- Asegúrate de cambiar "app.js" por el nombre real de tu archivo JavaScript -->
-    <!-- <script src="app.js" defer></script> -->
-</head>
-<body>
+<div class="perfil-wrapper">
+    <img src="naranja.png" alt="Naranja" class="fruta fruta-naranja">
+    <img src="manzana.png" alt="Manzana" class="fruta fruta-manzana">
+    <img src="aguacatepro.png" alt="Aguacate" class="fruta fruta-aguacate">
+    <img src="arandanos.png" alt="Arándanos" class="fruta fruta-arandanos">
 
-    <div class="perfil-wrapper">
-        <img src="naranja.png" alt="Naranja" class="fruta fruta-naranja">
-        <img src="manzana.png" alt="Manzana" class="fruta fruta-manzana">
-        <img src="aguacatepro.png" alt="Aguacate" class="fruta fruta-aguacate">
-        <img src="arandanos.png" alt="Arándanos" class="fruta fruta-arandanos">
-
-        <!-- Sección: Tu Perfil -->
-         <div id="cardCore">
-            <div class="perfil-section" id="card1">
-            <h2 class="section-title">Tu Perfil</h2>
-            <div class="card">
-                <div class="card-content">
-                    <div class="profile-left">
-                        <div class="avatar-container">
-                            <div class="avatar-placeholder">
-                                <svg viewBox="0 0 24 24" width="70" height="70" fill="#b84a4a">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="profile-info-text">
-                            <p>
-                                <strong>Nombre de Locatario:</strong>
-                                <input type="text" id="nomLoc">
-                            </p>
-                            <p>
-                                <strong>ID de Locatario:</strong>
-                                <input type="text" id="idLoc" readonly>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="profile-right">
-                        <div class="form-group">
-                            <label for="correoLoc">Correo Electrónico</label>
-                            <input type="email" id="correoLoc" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="telLoc">Número Telefónico</label>
-                            <input type="tel" id="telLoc" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="passLoc">Contraseña</label>
-                            <input type="password" id="passLoc" class="form-control" placeholder="••••••••">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-actions">
-                    <div class="left-buttons">
-                        <button type="button" id="btnCerrarSesion" class="btn btn-danger">Cerrar Sesión</button>
-                        <button type="button" id="btnEliminarCuenta" class="btn btn-danger">Eliminar Cuenta</button>
-                    </div>
-                    <div class="right-buttons">
-                        <button type="button" id="btnGuardarPerfil" class="btn btn-primary">Guardar Cambios</button>
-                        <button type="button" id="btnEditarPerfil" class="btn-icon">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="#b84a4a">
-                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+    <!-- Tu Perfil -->
+     <div id="cardCore">
+        <div class="perfil-section" id="card1">
+        <h2 class="section-title">Tu Perfil</h2>
+        <div class="card">
+            <div class="card-content">
+                <div class="profile-left">
+                    <div class="avatar-container">
+                        <div class="avatar-placeholder">
+                            <svg viewBox="0 0 24 24" width="70" height="70" fill="#b84a4a">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
                             </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Sección: Local -->
-            <div class="perfil-section" id="card2">
-            <h2 class="section-title">Local</h2>
-            <div class="card">
-                <div class="card-content">
-                    <div class="profile-left">
-                        <div class="avatar-container">
-                            <div class="avatar-placeholder" style="border-color: #333;">
-                                <svg viewBox="0 0 24 24" width="60" height="60" fill="#333">
-                                    <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="profile-info-text">
-                            <p><strong>Nombre de Local:</strong> <span id="nomLocal">Sin local registrado</span></p>
                         </div>
                     </div>
-
-                    <div class="profile-right local-right">
-                        <div class="form-group-text">
-                            <p><strong>Correo Electrónico:</strong> <span id="correoLocal">-</span></p>
-                        </div>
-                        <div class="form-group-text">
-                            <p><strong>Número Telefónico:</strong> <span id="telLocal">-</span></p>
-                        </div>
+                    <div class="profile-info-text">
+                        <p>
+                            <strong>Nombre de Locatario:</strong>
+                            <input type="text" id="nomLoc">
+                        </p>
+                        <p>
+                            <strong>ID de Locatario:</strong>
+                            <input type="text" id="idLoc" readonly>
+                        </p>
                     </div>
                 </div>
 
-                <div class="card-actions">
-                    <div class="left-buttons"></div>
-                    <div class="right-buttons">
-                        <button type="button" id="btnEliminarLocal" class="btn btn-danger">Eliminar Local</button>
-                        <button type="button" id="btnGuardarLocal" class="btn btn-primary">Guardar Cambios</button>
-                        <button type="button" id="btnEditarLocal" class="btn-icon">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="#b84a4a">
-                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-                            </svg>
-                        </button>
+                <div class="profile-right">
+                    <div class="form-group">
+                        <label for="correoLoc">Correo Electrónico</label>
+                        <input type="email" id="correoLoc" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="telLoc">Número Telefónico</label>
+                        <input type="tel" id="telLoc" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="passLoc">Contraseña</label>
+                        <input type="password" id="passLoc" class="form-control" placeholder="••••••••">
                     </div>
                 </div>
             </div>
+
+            <div class="card-actions">
+                <div class="left-buttons">
+                    <button type="button" id="btnCerrarSesion" class="btn btn-danger">Cerrar Sesión</button>
+                    <button type="button" id="btnEliminarCuenta" class="btn btn-danger">Eliminar Cuenta</button>
+                </div>
+                <div class="right-buttons">
+                    <button type="button" id="btnGuardarPerfil" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="btnEditarPerfil" class="btn-icon">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="#b84a4a">
+                            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
 
-</body>
-</html>
+        <!-- Local -->
+        <div class="perfil-section" id="card2">
+        <h2 class="section-title">Local</h2>
+        <div class="card">
+            <div class="card-content">
+                <div class="profile-left">
+                    <div class="avatar-container">
+                        <div class="avatar-placeholder" style="border-color: #333;">
+                            <svg viewBox="0 0 24 24" width="60" height="60" fill="#333">
+                                <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="profile-info-text">
+                        <p><strong>Nombre de Local:</strong> <span id="nomLocal">Sin local registrado</span></p>
+                    </div>
+                </div>
+
+                <div class="profile-right local-right">
+                    <div class="form-group-text">
+                        <p><strong>Correo Electrónico:</strong> <span id="correoLocal">-</span></p>
+                    </div>
+                    <div class="form-group-text">
+                        <p><strong>Número Telefónico:</strong> <span id="telLocal">-</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <div class="left-buttons"></div>
+                <div class="right-buttons">
+                    <button type="button" id="btnEliminarLocal" class="btn btn-danger">Eliminar Local</button>
+                    <button type="button" id="btnGuardarLocal" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="btnEditarLocal" class="btn-icon">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="#b84a4a">
+                            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

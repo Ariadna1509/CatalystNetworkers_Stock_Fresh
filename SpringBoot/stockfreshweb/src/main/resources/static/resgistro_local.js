@@ -4,7 +4,6 @@ document.addEventListener('submit', async function (e) {
     }
 
     e.preventDefault();
-
     const idLocatarioSaved =    window.idLocatarioActual || 
                                 sessionStorage.getItem('idLocatarioActual');
     const inputNombre = document.getElementById("nombreLocal");
@@ -23,7 +22,7 @@ document.addEventListener('submit', async function (e) {
     };
 
     try {
-        const answer = await fetch('/api/locatarios/registroLocal', 
+        const answer = await fetch(API_BASE + '/api/locatarios/registroLocal', 
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -33,6 +32,7 @@ document.addEventListener('submit', async function (e) {
         if (answer.ok) {
             alert('¡Bienvenido, ' + data.nombre + '!');
             if (typeof cargarPerfil === 'function') {
+                console.log("Cargando perfil...")
                 cargarPerfil();
             }
         } else {

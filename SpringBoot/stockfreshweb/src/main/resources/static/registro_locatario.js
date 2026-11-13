@@ -22,9 +22,10 @@ document.addEventListener('submit', async function (e) {
 
     if (formId === 'formPaso2') {
         try {
-            const respuesta = await fetch('/api/locatarios/registro', {
+            const respuesta = await fetch(API_BASE + '/api/locatarios/registro', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                credentials: "include",
                 body: JSON.stringify({
                     idLocatario: document.getElementById('idLocatario').value.trim(),
                     nombre: datosPaso1.nombre,
@@ -37,13 +38,16 @@ document.addEventListener('submit', async function (e) {
             if (respuesta.ok) {
                 alert('¡Registro exitoso en Stock & Fresh!');
 
+                
                 const idSaved = document.getElementById('idLocatario').value.trim();
 
                 window.idLocatarioActual = idSaved;
 
                 sessionStorage.setItem('idLocatarioActual', idSaved);
                 
-                cargarAgregarPerfil();
+                
+                await cargarAgregarPerfil();
+
             } else {
                 const mensajeError = await respuesta.text();
                 alert('Error al registrar (' + respuesta.status + '): ' + mensajeError);

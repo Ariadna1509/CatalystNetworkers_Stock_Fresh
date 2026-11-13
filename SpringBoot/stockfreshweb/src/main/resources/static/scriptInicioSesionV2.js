@@ -20,7 +20,6 @@
             //solo cambiamos los valores de x & y 
     }); */
 let figureAbort = null;
-
 function inicializarFigura() {
     const figuras = document.querySelectorAll('.figure_1');   
     if (!figuras.length) return;
@@ -107,14 +106,16 @@ function inicializarFigura() {
         i.addEventListener('blur', () => { estado.foco = null; actualizar(); })
     );
 
+    //Query
     document.querySelector('#form').addEventListener('submit', async function (e) {
-        e.preventDefault();
+        e.preventDefault(); 
         const idClean = id.value.trim();
         const passwordClean = password.value;
 
         try {
-            const respuesta = await fetch('/api/locatarios/login', {
-                method: 'POS',
+            const respuesta = await fetch(API_BASE + '/api/locatarios/login', {
+                method: 'POST',
+                credentials: "include",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ idLocatario: idClean, contrasena: passwordClean })
             });
@@ -122,14 +123,16 @@ function inicializarFigura() {
             if (respuesta.ok) {
                 reaccionar('ok', ['salta', 'feliz'], 1600); 
                 const locatario = await respuesta.json();
-                alert('¡Bienvenido ' + locatario.nombre + '!');
-                
-                localStorage.setItem('idLocatario', locatario.idLocatario);
-                window.location.href = '/InicioSesion.html';
+                //alert('¡Bienvenido ' + locatario.nombre + '!');
+                setTimeout(() => {
+                    localStorage.setItem('idLocatario', locatario.idLocatario);
+                    //window.location.href = '/InicioSesion.html';
+                    cargarDashBoard();
+                }, 500)
             
             } else if (respuesta.status === 401) {
                 reaccionar('error', ['sacudir', 'tiste'], 1200);
-                alert('ID o contraseña incorrectos.');
+                //alert('ID o contraseña incorrectos.');
             } else {
                 alert('Error del servidor (' + respuesta.status + ').');
             }

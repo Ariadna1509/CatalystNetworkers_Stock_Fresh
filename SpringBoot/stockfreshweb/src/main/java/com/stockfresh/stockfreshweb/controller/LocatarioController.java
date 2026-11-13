@@ -86,16 +86,29 @@ public class LocatarioController {
         try {
 
             locatarioRepository.save(nuevo);
+
+            HttpSession sesionAntigua = request.getSession(false);
+            if(sesionAntigua != null)
+                {
+                    sesionAntigua.invalidate();
+                }
             HttpSession sesion = request.getSession(true);
             sesion.setAttribute("rol", "Locatario");
             sesion.setAttribute("idLocatario", nuevo.getIdLocatario());
+            sesion.setAttribute("nombre", nuevo.getNombre());
 
         } catch (DataIntegrityViolationException e) {
 
             return ResponseEntity.status(409).body("Ese correo ya está registrado");
             
         }
-        return ResponseEntity.ok(Map.of("mensaje", "Registro exitoso"));
+        return ResponseEntity.ok(Map.of
+            (
+            "mensaje", "Registro exitoso",
+            "idLocatario", nuevo.getIdLocatario(),
+            "nombre", nuevo.getNombre(),
+            "rol", "Locatario"
+        ));
     }
 
     //Registramos Local 
@@ -138,18 +151,19 @@ public class LocatarioController {
     @PostMapping("/login")
 
     public ResponseEntity<?> login(@RequestBody LoginRequest datos, HttpServletRequest request) {
+
         if (vacio(datos.idLocatario()) || vacio(datos.contrasena())) {
             return ResponseEntity.status(401).body("Credenciales incorrectas");
         }
 
-        Optional<Locatario> opt = locatarioRepository.findById(datos.idLocatario().trim());
-        
+        Optional<Locatario> locatarioOpt = locatarioRepository.findById(datos.idLocatario().trim());
 
-        if (opt.isEmpty() || !datos.contrasena().equals(opt.get().getContrasena())) {
+        if (locatarioOpt.isEmpty() || !datos.contrasena().equals(locatarioOpt.get().getContrasena())) 
+        {
             return ResponseEntity.status(401).body("Credenciales incorrectas");
         }
 
-        Locatario l = opt.get();
+        Locatario l = locatarioOpt.get();
         
         HttpSession vieja = request.getSession(false);
         if (vieja != null) {
@@ -157,7 +171,7 @@ public class LocatarioController {
         }
         
         HttpSession sesion = request.getSession(true);
-        sesion.setAttribute("id", l.getIdLocatario());
+        sesion.setAttribute("idLocatario", l.getIdLocatario());
         sesion.setAttribute("nombre", l.getNombre());
         sesion.setAttribute("rol", l.getRol());
 
@@ -191,11 +205,12 @@ public class LocatarioController {
 
     @GetMapping("/perfil")
     public ResponseEntity<?> datosPerfil(HttpSession sesion) {
-        Object id = sesion.getAttribute("id");
+        Object id = sesion.getAttribute("idLocatario");
         if(id == null)
         {
             return ResponseEntity.status(401).body("Sesion cerrada, inicia sesión");
         }
+
         String idLocatario = id.toString();
 
         Optional<Locatario> locatarioOpt = locatarioRepository.findById(idLocatario);

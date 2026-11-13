@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StockfreshwebApplication {
 
-	public static void main(String[] args) {
+	public static void qmain(String[] args) {
 		SpringApplication.run(StockfreshwebApplication.class, args);
 	}
 
