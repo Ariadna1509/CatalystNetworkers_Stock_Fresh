@@ -1,9 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
     <head>
         <title>Stock & Fresh</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="infoPagesStyles.css"/>
+        <link rel="stylesheet" href="ventasi.css"/>
         <script defer src="login_locatario.js"></script>
         <script defer src="registro_locatario.js"></script>
         <script defer src="cargarMain.js"></script>
@@ -17,16 +22,14 @@
                     <span>Stock & Fresh</span>
                 </div>
                 <div class="search-bar">
-                    <input type="text"  placeholder="Buscar...">
+                    <input type="text" placeholder="Buscar...">
                 </div>
                 <div class="user-actions">
                     <div class="logo-usuario">
                         <img src="icono_usuario_circulo.png" alt="Stock & Fresh" class="avatar" onclick="verPerfil()">
                     </div>
                     <button class="iniciosesion" onclick="cargarLogin()">INICIAR SESION</button>
-
                     <button class="iniciosesion" onclick="cargarMain()">HOME</button>
-
                     <span class="cart">$ 0.00</span>
                 </div>
             </div>
@@ -40,16 +43,117 @@
                     <li><a href="reportesInfoPage.html">Reportes y Gráficas</a></li>
                 </ul>
             </nav>
-            
         </header>
 
-        <main class="principal">
-            <div>
-                <h1>Reportes</h1>
-                <p>Nothing yet</p>
+                <main class="principal">
+            <!-- LADO IZQUIERDO: INFORMACIÓN -->
+            <section class="info-modulo">
+                <span class="etiqueta-modulo">MÓDULO DE REPORTES Y GRÁFICAS</span>
+                <h1>Bienvenido al módulo de Reportes y Gráficas</h1>
+                <p class="intro-modulo">Este módulo le permite, como locatario, visualizar el rendimiento de su negocio con gráficas y totales.</p>
+                <h2>En este módulo usted podrá</h2>
+                <ul class="lista-funciones">
+                        <li class="v"><span>1</span>Consultar gráficas de su negocio</li>
+                        <li class="a"><span>2</span>Ver el total de ventas</li>
+                        <li class="a"><span>3</span>Ver el total de transacciones</li>
+                        <li class="v"><span>4</span>Ver el total de productos</li>
+                </ul>
+            </section>
+
+            <!-- LADO DERECHO: Imagen -->
+            <div class="contenedor-imagen-derecha">
+                <img src="dispositivosreportes.png" alt="Dispositivos del módulo de reportes y gráficas" class="imagen-derecha">
             </div>
         </main>
 
+        <!-- ASISTENTE FLOTANTE: la canasta (haz clic para ver qué puedes hacer) -->
+        <div class="asistente" id="canastaMascota">
+            <div class="globo-texto" id="globoCanasta">...</div>
+
+            <div class="asistente-boton" id="botonCanasta" role="button" tabindex="0"
+                 title="Haz clic para ver qué puedes hacer" aria-label="Asistente: haz clic para ver qué puedes hacer">
+                <div class="mascota-escala">
+        <div class="bob">
+                            <!-- CANASTA EN VECTORES SVG -->
+                            <svg class="canasta-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <filter id="sombra" x="-10%" y="-10%" width="120%" height="120%">
+                                        <feDropShadow dx="0" dy="6" stdDeviation="5" flood-opacity="0.12"/>
+                                    </filter>
+                                </defs>
+
+                                <g filter="url(#sombra)">
+                                    <!-- 1. Asa trasera -->
+                                    <path d="M52 118 C52 26, 268 26, 268 118" fill="none" stroke="#b57c4a" stroke-width="16" stroke-linecap="round"/>
+                                    <path d="M52 118 C52 26, 268 26, 268 118" fill="none" stroke="#d89e68" stroke-width="11" stroke-linecap="round"/>
+
+                                    <!-- 2. Frutas traseras (Pera y Manzana) -->
+                                    <g transform="translate(178, 56)">
+                                        <path d="M22 6 C28 6 30 14 30 20 C30 26 42 30 42 44 C42 55 32 60 22 60 C12 60 2 55 2 44 C2 30 14 26 14 20 C14 14 16 6 22 6 Z" fill="#9bc83a" stroke="#4A3C31" stroke-width="2.5"/>
+                                        <path d="M22 6 Q22 2 25 0" fill="none" stroke="#4A3C31" stroke-width="2.5" stroke-linecap="round"/>
+                                        <path d="M24 4 C29 -1 36 0 38 4 C33 7 27 6 24 4 Z" fill="#4f9a3f" stroke="#4A3C31" stroke-width="1.5"/>
+                                        <ellipse cx="14" cy="40" rx="3" ry="5" fill="#c4df76" transform="rotate(-15 14 40)"/>
+                                    </g>
+
+                                    <g transform="translate(220, 80)">
+                                        <path d="M25 12 C18 4 3 10 5 28 C6 43 16 51 22 48 C24 47 26 47 28 48 C34 51 44 43 45 28 C47 10 32 4 25 12 Z" fill="#eb3b30" stroke="#4A3C31" stroke-width="2.5"/>
+                                        <path d="M25 12 Q23 6 27 2" fill="none" stroke="#4A3C31" stroke-width="2.5" stroke-linecap="round"/>
+                                        <path d="M27 7 C32 1 40 2 43 6 C38 10 31 10 27 7 Z" fill="#5baa3c" stroke="#4A3C31" stroke-width="1.5"/>
+                                        <ellipse cx="13" cy="24" rx="3" ry="6" fill="#f58076" transform="rotate(-20 13 24)"/>
+                                    </g>
+
+                                    <!-- 3. Frutas delanteras (Naranja y Sandía) -->
+                                    <g transform="translate(110, 58)">
+                                        <circle cx="48" cy="48" r="41" fill="#f59a2e" stroke="#4A3C31" stroke-width="2.5"/>
+                                        <path d="M48 7 Q46 2 51 -1" fill="none" stroke="#4A3C31" stroke-width="2.5" stroke-linecap="round"/>
+                                        <path d="M51 4 C58 -3 69 -3 74 1 C68 9 57 10 51 4 Z" fill="#5baa3c" stroke="#4A3C31" stroke-width="1.5"/>
+                                        <ellipse cx="26" cy="32" rx="7" ry="14" fill="#fbbf5e" transform="rotate(-25 26 32)"/>
+                                    </g>
+
+                                    <g transform="translate(44, 78) rotate(18 45 25)">
+                                        <path d="M3 3 A38 41 0 0 0 91 3 Z" fill="#4f9a3f" stroke="#4A3C31" stroke-width="2.5" stroke-linejoin="round"/>
+                                        <path d="M6 3 A35 38 0 0 0 88 3 Z" fill="#eaf7d9"/>
+                                        <path d="M9 3 A32 35 0 0 0 85 3 Z" fill="#ef5a4f"/>
+                                        <g fill="#2a1a1a">
+                                            <ellipse cx="22" cy="16" rx="2" ry="3" transform="rotate(-15 22 16)"/>
+                                            <ellipse cx="38" cy="26" rx="2" ry="3"/>
+                                            <ellipse cx="56" cy="25" rx="2" ry="3" transform="rotate(10 56 25)"/>
+                                            <ellipse cx="70" cy="15" rx="2" ry="3" transform="rotate(20 70 15)"/>
+                                            <ellipse cx="47" cy="12" rx="1.8" ry="2.8"/>
+                                        </g>
+                                    </g>
+
+                                    <!-- 4. Cuerpo liso y redondito de la canasta -->
+                                    <path d="M44 124 L276 124 C274 182, 248 214, 198 216 L122 216 C72 214, 46 182, 44 124 Z" fill="#d59b65" stroke="#4A3C31" stroke-width="2.5" stroke-linejoin="round"/>
+
+                                    <!-- 5. Paño decorativo -->
+                                    <polygon points="95,124 225,124 160,158" fill="#f1c40f" stroke="#4A3C31" stroke-width="2.5" stroke-linejoin="round"/>
+                                    <polygon points="108,124 212,124 160,150" fill="#e05353"/>
+                                    <polygon points="121,124 199,124 160,143" fill="#439a46"/>
+                                    <polygon points="134,124 186,124 160,136" fill="#0d52b3"/>
+
+                                    <!-- 6. Borde superior -->
+                                    <rect x="34" y="114" width="252" height="16" rx="8" fill="#e0ab76" stroke="#4A3C31" stroke-width="2.5"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <!-- CARA INTERACTIVA (OJOS Y BOCA TIERNA) -->
+                        <div class="cara-canasta">
+                            <div class="ojos-fila">
+                                <div class="ojo"><div class="pupil"></div></div>
+                                <div class="ojo"><div class="pupil"></div></div>
+                            </div>
+                            <div class="mejillas">
+                                <div class="mejilla"></div>
+                                <div class="mejilla"></div>
+                            </div>
+                            <div class="boca"></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+   
         <footer class="site-footer">
             <div class="footer-links">
                 <a href="#ubicacion">Ubicación</a>
@@ -61,5 +165,7 @@
                 <p>&copy; 2026 Stock & Fresh. Todos los derechos reservados.</p>
             </div>
         </footer>
+
+        <script src="reportesi.js"></script>
     </body>
 </html>
