@@ -19,7 +19,15 @@
             `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`; //Modificamos el CSS (por defaoult las pupilas ya estan centradas: transform: translate(-50%, -50%);)
             //solo cambiamos los valores de x & y 
     }); */
-let figureAbort = null;
+
+    let figureAbort = null;
+function oculatarElementos(){
+    buttonLogin.style.display = "none";
+    buttonHome.onclick = function() {
+        cargarDashBoard();
+    }
+}
+
 function inicializarFigura() {
     const figuras = document.querySelectorAll('.figure_1');   
     if (!figuras.length) return;
@@ -126,9 +134,10 @@ function inicializarFigura() {
                 //alert('¡Bienvenido ' + locatario.nombre + '!');
                 setTimeout(() => {
                     localStorage.setItem('idLocatario', locatario.idLocatario);
-                    //window.location.href = '/InicioSesion.html';
+                    actualizarNav(true);     // marca sesión activa y oculta el botón de login
                     cargarDashBoard();
-                }, 500)
+                }, 500);
+                //SeCIÓN INHABIL 
             
             } else if (respuesta.status === 401) {
                 reaccionar('error', ['sacudir', 'tiste'], 1200);

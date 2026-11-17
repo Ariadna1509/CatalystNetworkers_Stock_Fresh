@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
+    <head> 
         <title>Stock & Fresh</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="dashboard.css"/>
         <script defer src="config.js"></script>
         <script defer src="registro_locatario.js"></script>
-        <script defer src="cargarMain.js?v=1311261"></script>
+        <script defer src="cargarMain.js?v=20"></script>
         <script defer src="scriptInicioSesionV2.js"></script>
         <script defer src="resgistro_local.js"></script>
         <script defer src="cargarPerfilLoc.js"></script>
@@ -27,18 +27,18 @@
                     <div class="logo-usuario">
                         <img src="icono_usuario_circulo.png" alt="Stock & Fresh" class="avatar" onclick="verPerfil()">
                     </div>
-                    <button class="iniciosesion" onclick="cargarLogin()">INICIAR SESION</button>
-                    <button class="iniciosesion" onclick="cargarMain()">HOME</button>
+                    <button id="button-login-dom" class="iniciosesion" onclick="cargarLogin()">INICIAR SESION</button>
+                    <button id="button-home-dom" class="iniciosesion" onclick="irHome()">HOME</button>
                     <span class="cart">$ 0.00</span>
                 </div>
             </div>
             <nav class="header-nav">
                 <ul>
-                    <li><a href="ventasInfoPage.html">Registro de Ventas</a></li>
-                    <li><a href="cajaInfoPage.html">Caja</a></li>
-                    <li><a href="gestionInventarioInfoPage.html">Gestión de Inventario</a></li>
-                    <li><a href="historialInfoPage.html">Historial</a></li>
-                    <li><a href="reportesInfoPage.html">Reportes y Gráficas</a></li>
+                    <li><a id="ventasInfo">Registro de Ventas</a></li>
+                    <li><a id="cajaInfo">Caja</a></li>
+                    <li><a id="gestionInfo">Gestión de Inventario</a></li>
+                    <li><a id="historialInfo">Historial</a></li>
+                    <li><a id="reportesInfo">Reportes y Gráficas</a></li>
                 </ul>
             </nav>
         </header>

@@ -23,6 +23,11 @@
   font-family: Tahoma, Verdana, Geneva, sans-serif;
 }
 
+.header-nav a.nav-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
 .dash *,
 .dash *::before,
 .dash *::after { box-sizing: border-box; }

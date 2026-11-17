@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.GetMapping;
 
 
 
@@ -178,20 +175,20 @@ public class LocatarioController {
         return ResponseEntity.ok(Map.of(
                 "idLocatario", l.getIdLocatario(),
                 "nombre", l.getNombre(),
-                "rol", l.getRol()));
+                "rol", l.getRol())); 
     }
     
     @GetMapping("/me")
     public ResponseEntity<?> me(HttpSession sesion) {
-        Object id = sesion.getAttribute("id");
+        Object id = sesion.getAttribute("idLocatario");   
         if (id == null) {
             return ResponseEntity.status(401).body("No hay sesión activa");
         }
         return ResponseEntity.ok(Map.of(
-            "idLocatario", id,
-            "nombre", sesion.getAttribute("nombre"),
-            "rol", sesion.getAttribute("rol")));
-        }
+        "idLocatario", id,
+        "nombre", String.valueOf(sesion.getAttribute("nombre")),
+        "rol", String.valueOf(sesion.getAttribute("rol"))));
+    }
 
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpSession sesion) {
