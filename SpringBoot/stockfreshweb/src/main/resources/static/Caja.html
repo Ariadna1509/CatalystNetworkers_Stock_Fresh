@@ -3,23 +3,21 @@
 <img src="aguacatepro.png" alt="Aguacate" class="fruta fruta-aguacate">
 <img src="arandanos.png" alt="Arándanos" class="fruta fruta-arandanos">
 
-<div class="caj">
-  <h1 class="caj-title">Caja</h1>
-  <p class="caj-subtitle">Abre o cierra el turno de tu caja</p>
+<div class="caja-wrapper">
+  <h2 class="titulo-inventario">Caja</h2>
+  <div class="caja-main-container">
+        
+        <!-- Tarjeta Apertura -->
+        <div class="caja-card">
+            <button class="caja-btn-top btn-apertura" onclick="AperturaCaja()">Apertura</button>
+            <img src="caja.png" alt="Productos" class="img-tarjeta">
+        </div>
 
-  <div class="caj-cards">
+        <!-- Tarjeta Cierre -->
+        <div class="caja-card">
+            <button class="caja-btn-top btn-cierre" onclick="CierreCaja()">Cierre</button>
+            <img src="caja_2.png" alt="Productos" class="img-tarjeta">
+        </div>
 
-    <!-- Apertura -->
-    <div class="caj-card">
-      <button class="caj-btn caj-btn-green" onclick="AperturaCaja()">Apertura</button>
-      <img src="caja.png" alt="Apertura de caja" class="caj-img">
     </div>
-
-    <!-- Cierre -->
-    <div class="caj-card">
-      <button class="caj-btn caj-btn-pink" onclick="CierreCaja()">Cierre</button>
-      <img src="caja_2.png" alt="Cierre de caja" class="caj-img">
-    </div>
-
-  </div>
 </div>

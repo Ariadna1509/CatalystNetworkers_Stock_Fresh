@@ -1,0 +1,26 @@
+<img src="naranja.png" alt="Naranja" class="fruta fruta-naranja">
+<img src="manzana.png" alt="Manzana" class="fruta fruta-manzana">
+<img src="aguacatepro.png" alt="Aguacate" class="fruta fruta-aguacate">
+<img src="arandanos.png" alt="Arándanos" class="fruta fruta-arandanos">
+
+<div class="contenedor-inventario">
+    <h2 class="titulo-historial">Historial</h2>
+    <div class="tarjetas-inventario">
+        <!-- Tarjeta Inventario -->
+         <div class="tarjeta-opcion">
+            <!-- El onclick llama a la función en el script de abajo -->
+             <button class="btn-inventario" onclick="CargarInventarioProductos()">Inventario</button>
+             <img src="carretilla.png" alt="Inventario" class="img-tarjeta">
+            </div>
+            <!-- Tarjeta Transacciones -->
+             <div class="tarjeta-opcion">
+                <button class="btn-transacciones" onclick="CargarTransacciones()">Transacciones</button>
+                <img src="cheque.png" alt="Transacciones" class="img-tarjeta">
+            </div>
+            <!-- Tarjeta Ventas -->
+             <div class="tarjeta-opcion">
+                <button class="btn-ventas" onclick="VerVentas()">Ventas</button>
+                <img src="dinero.png" alt="Ventas" class="img-tarjeta">
+            </div>
+        </div>
+    </div>

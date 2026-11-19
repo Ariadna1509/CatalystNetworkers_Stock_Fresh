@@ -1,138 +1,424 @@
-.caj {
-  --c-green:  #5f9f5a;
-  --c-pink:   #c95d6a;
-  --c-text:   #1a1a1a;
-  --c-muted:  #555;
-  --c-radius: 22px;
-  --c-shadow: 0 6px 16px rgba(0, 0, 0, .12);
-
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 32px 56px;
-  box-sizing: border-box;
-  color: var(--c-text);
-  font-family: Tahoma, Verdana, Geneva, sans-serif;
-  flex: 0 0 auto;
-  align-self: flex-start;
+.fruta {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none; /* Para que no estorben al hacer clic */
 }
 
-.caj *,
-.caj *::before,
-.caj *::after { box-sizing: border-box; }
-
-/* ===== Títulos ===== */
-.caj-title {
-  margin: 0;
-  text-align: center;
-  font-size: 2.8rem;
-}
-.caj-subtitle {
-  margin: 8px 0 40px;
-  text-align: center;
-  color: var(--c-muted);
-  font-size: 1.1rem;
+.fruta-naranja {
+    top: 10px;
+    left: 10px;
+    width: 170px;
 }
 
-/* ===== Tarjetas ===== */
-.caj-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+.fruta-manzana {
+    bottom: -30px;
+    left: 0px;
+    width: 230px;
 }
 
-.caj-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 26px;
-  padding: 36px 24px;
-  background: rgba(255, 255, 255, .96);
-  border-radius: var(--c-radius);
-  box-shadow: var(--c-shadow);
-  transition: transform .2s, box-shadow .2s;
-}
-.caj-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, .16);
+.fruta-pera {
+    top: 5px;
+    left: 41%;
+    width: 200px;
 }
 
-.caj-img {
-  width: 100%;
-  max-width: 220px;
-  height: 200px;
-  object-fit: contain;
+.fruta-zanahoria {
+    bottom: 50px;
+    left: 52%;
+    width: 210px;
 }
 
-/* ===== Botones tipo píldora ===== */
-.caj-btn {
-  width: 100%;
-  padding: 18px 20px;
-  border: none;
-  border-radius: 50px;
-  color: #fff;
-  font-family: inherit;
-  font-size: 1.25rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: var(--c-shadow);
-  transition: transform .15s, filter .15s;
-}
-.caj-btn:hover  { transform: translateY(-2px); filter: brightness(1.1); }
-.caj-btn:active { transform: translateY(0); }
-
-.caj-btn-green { background: var(--c-green); }
-.caj-btn-pink  { background: var(--c-pink); }
-
-/* ===== Ajuste de .principal + scroll =====
-   Solo aplica cuando .principal contiene esta pantalla. */
-.principal:has(> .caj) {
-  display: block;
-  height: auto;
-  min-height: 0;
-  max-height: none;
-  overflow: visible;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-top: 0;
-  padding-bottom: 0;
+.fruta-aguacate {
+    top: -0px;
+    right: -0px;
+    width: 170px;
 }
 
-html:has(.caj),
-body:has(.caj) {
-  height: auto;
-  min-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+.fruta-arandanos {
+    bottom: -30px;
+    right: 0px;
+    width: 230px;
+}
+/*estilo main*/
+.caja-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 20px;
 }
 
-body:has(.caj) .site-footer {
-  position: relative;
-  bottom: auto;
-  left: auto;
-  right: auto;
-  width: 100%;
-  margin-top: 0;
+
+.titulo-inventario{
+color: #D65A70; /* Color similar al de tu imagen */
+    font-family: "Times New Roman", Times, serif;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: -100px;
+    text-align: center;
 }
 
-html:has(.caj) {
-  scrollbar-width: thin;
-  scrollbar-color: #97c053 #eef5df;
+.caja-main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin-top: 70px;
 }
-html:has(.caj)::-webkit-scrollbar { width: 12px; }
-html:has(.caj)::-webkit-scrollbar-track { background: #eef5df; }
-html:has(.caj)::-webkit-scrollbar-thumb {
-  background: #97c053;
-  border-radius: 10px;
-  border: 2px solid #eef5df;
+.img-tarjeta {
+    width: 250px;      /* Ancho estándar fijo para que ambas midan lo mismo horizontalmente */
+    height: 170px;     /* Alto fijo para asegurar que no se disparen */
+    object-fit: contain;
+    margin-bottom: 20px;
 }
-html:has(.caj)::-webkit-scrollbar-thumb:hover { background: #5f8f2f; }
 
-/* ===== Responsive ===== */
-@media (max-width: 700px) {
-  .caj { padding: 28px 14px 40px; }
-  .caj-title { font-size: 2rem; }
-  .caj-cards { grid-template-columns: 1fr; }
+.caja-card {
+    background: #ffffff;
+    border: 2px solid #e8a5a5;
+    border-radius: 24px;
+    padding: 30px 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    width: 300px;
+    min-width: 300px;
+    height: 300px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    cursor: pointer; /* Muestra la "manita" para indicar que es un botón */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Efecto visual suave */
+}
+.caja-card:hover{
+     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.caja-btn-top {
+    width: 80%;
+    padding: 12px;
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    text-align: center;
+    transition: opacity 0.2s;
+}
+
+.caja-btn-top:hover {
+    opacity: 0.9;
+}
+
+.btn-apertura {
+    background-color: #b7e4a4; /* Tono verde claro tipo pastilla */
+    color: #222;
+}
+
+.btn-cierre {
+    background-color: #f3c153; /* Tono amarillo/naranja pastilla */
+    color: #222;
+}
+
+.caja-icon-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.status-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+    background: #ffffff;
+    border: 2px solid #d9534f;
+    color: #d9534f;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.caja-svg {
+    display: block;
+}
+
+/*Diseño AperturaCaja.html*/
+.apertura-caja-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+
+.section-title {
+    text-align: center;
+    color: #b84a4a;
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.apertura-card {
+    background: #ffffff;
+    border: 2px solid #ebdcb8;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    gap: 35px;
+    margin-top: 70px;
+}
+
+.apertura-col-left,
+.apertura-col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.apertura-divider {
+    width: 2px;
+    background-image: linear-gradient(to bottom, #e8a5a5 50%, transparent 50%);
+    background-size: 2px 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #222;
+}
+
+.form-control {
+    padding: 10px 14px;
+    border: 1px solid #e8a5a5;
+    border-radius: 8px;
+    outline: none;
+    font-size: 13px;
+    background-color: #fffcfc;
+    width: 100%;
+    box-sizing: border-box;
+    color: #444;
+}
+
+.form-control:focus {
+    border-color: #b84a4a;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon-wrapper .form-control {
+    padding-right: 40px;
+}
+
+.input-icon {
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+}
+
+.select-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 24 24' width='16' height='16' fill='%23b84a4a' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    color: #888;
+}
+
+.btn-aperturar {
+    background-color: #d9534f;
+    color: white;
+    padding: 11px;
+    border-radius: 18px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-top: 10px;
+    transition: opacity 0.2s;
+}
+
+.btn-aperturar:hover {
+    opacity: 0.9;
+}
+
+/*Diseño CierreCaja.html*/
+.cierre-caja-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+
+.section-title {
+    text-align: center;
+    color: #b84a4a;
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.cierre-card {
+    background: #ffffff;
+    border: 2px solid #ebdcb8;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    gap: 40px;
+    margin-top: 70px;
+}
+
+.cierre-col-left,
+.cierre-col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: center;
+}
+
+.cierre-col-right {
+    gap: 22px;
+}
+
+.cierre-divider-vertical {
+    width: 2px;
+    background-image: linear-gradient(to bottom, #e8a5a5 50%, transparent 50%);
+    background-size: 2px 10px;
+}
+
+.cierre-divider-horizontal {
+    height: 1px;
+    background-color: #e8a5a5;
+    margin: 5px 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #222;
+}
+
+.sub-label {
+    font-size: 12px !important;
+    color: #333 !important;
+}
+
+.form-control {
+    padding: 9px 12px;
+    border: 1px solid #e8a5a5;
+    border-radius: 8px;
+    outline: none;
+    font-size: 13px;
+    background-color: #fffcfc;
+    width: 100%;
+    box-sizing: border-box;
+    color: #444;
+}
+
+.form-control:focus {
+    border-color: #b84a4a;
+}
+
+.cierre-row-selects {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+.select-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 24 24' width='16' height='16' fill='%23b84a4a' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.pagos-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pagos-titulo {
+    font-size: 13px;
+    font-weight: bold;
+    color: #222;
+}
+
+.pagos-inputs-grid {
+    display: flex;
+    gap: 12px;
+}
+
+.pagos-inputs-grid .form-group {
+    flex: 1;
+}
+
+.btn-cierre-accion {
+    background-color: #d9534f;
+    color: white;
+    padding: 11px;
+    border-radius: 18px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-top: 5px;
+    transition: opacity 0.2s;
+}
+
+.btn-cierre-accion:hover {
+    opacity: 0.9;
 }

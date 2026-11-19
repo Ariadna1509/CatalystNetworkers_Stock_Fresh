@@ -4,11 +4,44 @@ const RUTAS_NAV = {
     cajaInfo: 'Caja.html',
     gestionInfo: 'gestioninventario.html',
     historialInfo: 'historial.html',
-    reportesInfo: 'reportesyg.html'
+    reportesInfo: 'reportesyg.html' 
 };
 
 //=======================================
 //         FUNCIONA NO TOCAR!!
+//=======================================
+
+//=======================================
+//         Redireccionamiento!!
+//=======================================
+function estoyIndex(){
+    return document.body.dataset.pagina === "index";
+}
+
+function forzarIndex(action){
+    if(estoyIndex()) return false;
+    sessionStorage.setItem('accionPendiente', action);
+    window.location.href = 'index.html';
+    return true;
+}
+
+function ejecutarAccionPendiente(){
+    const action = sessionStorage.getItem('accionPendiente');
+    if(!action){
+        return;
+    }
+    sessionStorage.removeItem('accionPendiente');
+
+    if(action === 'login'){
+        cargarLogin();
+    } else {
+        cargarRegistro();
+    }
+}
+document.addEventListener('DOMContentLoaded', ejecutarAccionPendiente);
+
+//=======================================
+//         Redireccionamiento!!
 //=======================================
 
 function cargarMain() {
@@ -33,6 +66,9 @@ async function cargarRegistro() {
 }
 
 async function cargarLogin() {
+
+    if(forzarIndex('login')) return; //Inicio de método. :)
+
     try {
         await cargarVista('InicioSesionV2.html');
         if (typeof inicializarFigura === 'function') {
@@ -56,7 +92,7 @@ async function cargarPerfil() {
         await cargarVista('Perfil.html');
         if (typeof cargarDatosPerfil === 'function') {
             await cargarDatosPerfil(); 
-        }
+        } 
     } catch (error) {
         console.error('Error al cargar la vista:', error);
     }

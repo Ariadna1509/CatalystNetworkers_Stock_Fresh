@@ -1,0 +1,141 @@
+/* Estilo general y posiciones de las frutas */
+.fruta {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none; /* Para que no estorben al hacer clic */
+}
+
+.fruta-naranja {
+    top: 10px;
+    left: 10px;
+    width: 170px;
+}
+
+.fruta-manzana {
+    bottom: -30px;
+    left: 0px;
+    width: 230px;
+}
+
+.fruta-pera {
+    top: 5px;
+    left: 41%;
+    width: 200px;
+}
+
+.fruta-zanahoria {
+    bottom: 50px;
+    left: 52%;
+    width: 210px;
+}
+
+.fruta-aguacate {
+    top: -0px;
+    right: -0px;
+    width: 170px;
+}
+
+.fruta-arandanos {
+    bottom: -30px;
+    right: 0px;
+    width: 230px;
+}
+
+/* =========================================
+   ESTILOS PARA GESTIÓN DE INVENTARIO
+   ========================================= */
+
+/* Contenedor principal para centrar todo */
+.contenedor-inventario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    width: 100%;
+}
+
+/* Título de color rojizo/rosa con tipografía elegante */
+.titulo-inventario {
+    color: #D65A70; /* Color similar al de tu imagen */
+    font-family: "Times New Roman", Times, serif;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+/* Contenedor que pone las dos tarjetas una al lado de la otra */
+.tarjetas-inventario {
+    display: flex;
+    gap: 50px; /* Separación entre las dos tarjetas */
+    justify-content: center;
+}
+
+/* Diseño del rectángulo blanco (Tarjeta) */
+.tarjeta-opcion {
+    background-color: #FFFFFF;
+    border: 2px solid #D65A70; /* Borde rosa/rojo */
+    border-radius: 20px; /* Bordes redondeados */
+    width: 300px;
+    min-width: 300px;
+    height: 300px;
+    max-height: 300px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombrita suave */
+}
+
+/* Estilo general para los dos botones dentro de la tarjeta */
+.btn-productos, 
+.btn-alertas {
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    width: 80%;
+    margin-bottom: 40px; /* Separa el botón de la imagen */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.item-producto-alertas {
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Color y borde que tomarán al ser seleccionadas (puedes elegir varias a la vez) */
+.item-producto-alertas.seleccionada {
+    background-color: #fce8e6 !important; /* Tono rosado/vino claro para destacar */
+    border-color: #d65a70 !important;      /* Borde más marcado */
+}
+
+/* Colores específicos de cada botón */
+.btn-productos {
+    background-color: #B2E58C; /* Verde clarito */
+}
+
+.btn-alertas {
+    background-color: #F7C04A; /* Amarillo/naranja clarito */
+}
+
+/* Tamaño de los dibujos dentro de la tarjeta */
+.img-tarjeta {
+    width: 250px;      /* Ancho estándar fijo para que ambas midan lo mismo horizontalmente */
+    height: 250px;     /* Alto fijo para asegurar que no se disparen */
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+.img-tarjeta-1 {
+    width: 150px;      /* Ancho estándar fijo para que ambas midan lo mismo horizontalmente */
+    height: 150px;     /* Alto fijo para asegurar que no se disparen */
+    object-fit: contain;
+    margin-bottom: 20px;
+}

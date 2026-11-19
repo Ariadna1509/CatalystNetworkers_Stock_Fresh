@@ -20,7 +20,7 @@
             //solo cambiamos los valores de x & y 
     }); */
 
-    let figureAbort = null;
+let figureAbort = null;
 function oculatarElementos(){
     buttonLogin.style.display = "none";
     buttonHome.onclick = function() {
@@ -112,7 +112,7 @@ function inicializarFigura() {
     password.addEventListener('focus', () => { estado.foco = 'password'; actualizar(); });
     [id, password].forEach((i) =>
         i.addEventListener('blur', () => { estado.foco = null; actualizar(); })
-    );
+    ); 
 
     //Query
     document.querySelector('#form').addEventListener('submit', async function (e) {

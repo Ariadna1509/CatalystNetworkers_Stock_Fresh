@@ -189,7 +189,7 @@ public class LocatarioController {
         "nombre", String.valueOf(sesion.getAttribute("nombre")),
         "rol", String.valueOf(sesion.getAttribute("rol"))));
     }
-
+ 
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpSession sesion) {
         sesion.invalidate();
