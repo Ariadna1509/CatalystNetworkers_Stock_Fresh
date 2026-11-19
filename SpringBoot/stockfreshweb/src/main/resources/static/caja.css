@@ -1,0 +1,138 @@
+.caj {
+  --c-green:  #5f9f5a;
+  --c-pink:   #c95d6a;
+  --c-text:   #1a1a1a;
+  --c-muted:  #555;
+  --c-radius: 22px;
+  --c-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 32px 56px;
+  box-sizing: border-box;
+  color: var(--c-text);
+  font-family: Tahoma, Verdana, Geneva, sans-serif;
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+
+.caj *,
+.caj *::before,
+.caj *::after { box-sizing: border-box; }
+
+/* ===== Títulos ===== */
+.caj-title {
+  margin: 0;
+  text-align: center;
+  font-size: 2.8rem;
+}
+.caj-subtitle {
+  margin: 8px 0 40px;
+  text-align: center;
+  color: var(--c-muted);
+  font-size: 1.1rem;
+}
+
+/* ===== Tarjetas ===== */
+.caj-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.caj-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 36px 24px;
+  background: rgba(255, 255, 255, .96);
+  border-radius: var(--c-radius);
+  box-shadow: var(--c-shadow);
+  transition: transform .2s, box-shadow .2s;
+}
+.caj-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .16);
+}
+
+.caj-img {
+  width: 100%;
+  max-width: 220px;
+  height: 200px;
+  object-fit: contain;
+}
+
+/* ===== Botones tipo píldora ===== */
+.caj-btn {
+  width: 100%;
+  padding: 18px 20px;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--c-shadow);
+  transition: transform .15s, filter .15s;
+}
+.caj-btn:hover  { transform: translateY(-2px); filter: brightness(1.1); }
+.caj-btn:active { transform: translateY(0); }
+
+.caj-btn-green { background: var(--c-green); }
+.caj-btn-pink  { background: var(--c-pink); }
+
+/* ===== Ajuste de .principal + scroll =====
+   Solo aplica cuando .principal contiene esta pantalla. */
+.principal:has(> .caj) {
+  display: block;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+html:has(.caj),
+body:has(.caj) {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body:has(.caj) .site-footer {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: 100%;
+  margin-top: 0;
+}
+
+html:has(.caj) {
+  scrollbar-width: thin;
+  scrollbar-color: #97c053 #eef5df;
+}
+html:has(.caj)::-webkit-scrollbar { width: 12px; }
+html:has(.caj)::-webkit-scrollbar-track { background: #eef5df; }
+html:has(.caj)::-webkit-scrollbar-thumb {
+  background: #97c053;
+  border-radius: 10px;
+  border: 2px solid #eef5df;
+}
+html:has(.caj)::-webkit-scrollbar-thumb:hover { background: #5f8f2f; }
+
+/* ===== Responsive ===== */
+@media (max-width: 700px) {
+  .caj { padding: 28px 14px 40px; }
+  .caj-title { font-size: 2rem; }
+  .caj-cards { grid-template-columns: 1fr; }
+}

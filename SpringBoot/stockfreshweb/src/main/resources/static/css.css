@@ -162,17 +162,16 @@ header {
 .header-nav ul li:nth-child(3) { background-color: #48A14D; }
 .header-nav ul li:nth-child(4) { background-color: #0056B3; }
 .header-nav ul li:nth-child(5) { background-color: #B22222; }
-
+/*
 .header-nav .status {
     pointer-events: none;
     cursor: not-allowed;
 }
-
+*/
 .header-nav a.nav-disabled {
     opacity: 0.4;
     cursor: not-allowed;
 }
-
 
 /* ==========================================
    CORRECCIÓN DE TAMAÑOS EN EL HEADER

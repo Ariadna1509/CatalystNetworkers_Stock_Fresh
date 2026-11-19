@@ -1,5 +1,4 @@
 let sesionActiva = false;
-
 const RUTAS_NAV = {
     ventasInfo: 'Ventas.html',
     cajaInfo: 'Caja.html',
@@ -7,6 +6,10 @@ const RUTAS_NAV = {
     historialInfo: 'historial.html',
     reportesInfo: 'reportesyg.html'
 };
+
+//=======================================
+//         FUNCIONA NO TOCAR!!
+//=======================================
 
 function cargarMain() {
     window.location.href = "index.html";
@@ -18,6 +21,7 @@ async function cargarVista(url) {
         throw new Error('No se pudo cargar ' + url);
     }
     document.querySelector('.principal').innerHTML = await response.text();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 async function cargarRegistro() {
@@ -61,6 +65,23 @@ async function cargarPerfil() {
 function verPerfil() {
     cargarPerfil();
 }
+/* 
+async function AperturaCaja() {
+    try {
+        await cargarVista('AperturaCaja.html');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function CierreCaja() {
+    try {
+        await cargarVista('CierreCaja.html');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+*/
 
 function actualizarNav(logueado) {
     sesionActiva = logueado;
@@ -69,14 +90,29 @@ function actualizarNav(logueado) {
         const link = document.getElementById(id);
         if (!link) continue;
 
+        // Guarda el href original del HTML (página informativa) la primera vez
+        //Algo así: 
+        // <a href="https://ejemplo.com">Contacto</a> (Esto en el HTML)
+        // [Ejecutas Método] =>
+        // <a href="https://ejemplo.com" data-href-info="https://ejemplo.com">Contacto</a>
+
+        if (link.hasAttribute('href') && !link.dataset.hrefInfo) {
+            link.dataset.hrefInfo = link.getAttribute('href');
+        }
+
+        link.classList.remove('nav-disabled');
+        link.removeAttribute('aria-disabled');
+
         if (logueado) {
-            link.href = ruta;
-            link.classList.remove('nav-disabled');
-            link.removeAttribute('aria-disabled');
-        } else {
+            // Con sesión: sin href, el listener carga la vista en .principal
             link.removeAttribute('href');
-            link.classList.add('nav-disabled');
-            link.setAttribute('aria-disabled', 'true');
+            link.style.cursor = 'pointer';
+        } else {
+            // Sin sesión: se restaura el href del HTML (página informativa)
+            if (link.dataset.hrefInfo) {
+                link.setAttribute('href', link.dataset.hrefInfo);
+            }
+            link.style.cursor = '';
         }
     }
 
@@ -111,4 +147,22 @@ async function verificarSesion() {
     }
 }
 
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('.header-nav a');
+    if (!link) return;
+
+    // Sin sesión: deja que el enlace navegue normal a su href informativo
+    if (!sesionActiva) return;
+
+    const ruta = RUTAS_NAV[link.id];
+    if (!ruta) return;
+
+    e.preventDefault();
+    cargarVista(ruta).catch(err => console.error('Error:', err));
+}, true);
+
 document.addEventListener('DOMContentLoaded', verificarSesion);
+
+//=======================================
+//         FUNCIONA NO TOCAR!!
+//=======================================

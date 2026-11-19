@@ -82,7 +82,7 @@
 .dash-kpi-value { font-size: 1.7rem; }
 .dash-kpi-note  { font-size: .85rem; opacity: .85; }
 
-/* Colores reutilizables (KPIs y accesos rápidos) */
+
 .dash-yellow { background: var(--d-yellow); }
 .dash-pink   { background: var(--d-pink); }
 .dash-green  { background: var(--d-green); }
