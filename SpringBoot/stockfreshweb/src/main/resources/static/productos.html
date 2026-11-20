@@ -1,0 +1,33 @@
+<img src="naranja.png" alt="Naranja" class="fruta fruta-naranja">
+<img src="manzana.png" alt="Manzana" class="fruta fruta-manzana">
+<img src="aguacatepro.png" alt="Aguacate" class="fruta fruta-aguacate">
+<img src="arandanos.png" alt="Arándanos" class="fruta fruta-arandanos">
+
+<div class="contenedor-inventario">
+    <h2 class="titulo-inventario">Productos</h2>
+    <!-- Contenedor de Tarjetas -->
+     <div class="tarjetas-inventario">
+        <!-- Tarjeta 1: Registrar Producto -->
+         <div class="tarjeta-opcion" onclick="cargarRegistrarProducto()">
+            <button class="btn-verde" onclick="cargarRegistrarProducto()">Registrar<br>Producto</button>
+            <img src="productos_sinfondo.png" alt="Registrar" class="img-tarjeta">
+        </div>
+        
+        <!-- Tarjeta 2: Modificar Producto -->
+         <div class="tarjeta-opcion" onclick="CargarModificarProducto()">
+            <button class="btn-amarillo">Modificar<br>Producto</button>
+            <img src="documento.png" alt="Modificar" class="img-tarjeta">
+        </div>
+        <!-- Tarjeta 3: Productos -->
+         <div class="tarjeta-opcion" onclick="CargarVerProductos()">
+            <button class="btn-verde">Productos</button>
+            <img src="caja_pro.png" alt="Productos" class="img-tarjeta">
+        </div>
+        
+        <!-- Tarjeta 4: Eliminar Producto -->
+         <div class="tarjeta-opcion" onclick="CargarEliminarProducto()">
+            <button class="btn-amarillo">Eliminar<br>Producto</button>
+            <img src="papelera.png" alt="Eliminar" class="img-tarjeta-1">
+        </div>
+    </div>
+</div>

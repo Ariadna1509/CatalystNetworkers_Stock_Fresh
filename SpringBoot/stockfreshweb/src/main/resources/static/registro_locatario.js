@@ -6,7 +6,7 @@ document.addEventListener('submit', async function (e) {
     if (formId === 'formPaso1' || formId === 'formPaso2') {
         e.preventDefault();
     } else {
-        return; 
+        return;  
     }
 
     if (formId === 'formPaso1') {

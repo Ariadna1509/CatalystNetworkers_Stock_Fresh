@@ -202,3 +202,22 @@ document.addEventListener('DOMContentLoaded', verificarSesion);
 //=======================================
 //         FUNCIONA NO TOCAR!!
 //=======================================
+
+//=======================================
+//   FUNCIoNES DE CaDA SeCCIÓN DEl NAv
+//=======================================
+async function cargarProductos() {
+    try {
+        await cargarVista('productos.html');   
+    } catch (error) {
+        console.error('Error:', error);  
+    }
+}
+
+async function cargarRegistrarProducto(){
+    try{
+        await cargarVista('productoRegistro.html');
+    } catch (error){
+        console.error('Error', error);
+    }
+}

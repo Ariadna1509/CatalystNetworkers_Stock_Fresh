@@ -1,0 +1,144 @@
+/* =========================================================
+   Stock & Fresh - Gestión de Productos
+   ========================================================= */
+:root {
+  --rosa-titulo: #c95d6a;
+  --rosa-borde: #e3a3a8;
+  --verde-btn: #c2e99a;
+  --amarillo-btn: #edbb52;
+  --texto-oscuro: #1a1a1a;
+}
+
+body {
+  position: relative;          /* para ubicar las frutas */
+  min-height: 100vh;
+  margin: 0;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+/* ---------- FRUTAS DECORATIVAS ---------- */
+.fruta {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;        /* no estorban los clics */
+  height: auto;
+}
+
+.fruta-naranja {
+  top: 120px;                  /* justo debajo del menú */
+  left: 8px;
+  width: clamp(90px, 12vw, 150px);
+}
+
+.fruta-aguacate {
+  top: 108px;
+  right: 0;
+  width: clamp(90px, 12vw, 150px);
+}
+
+.fruta-manzana {
+  bottom: 0;
+  left: 24px;
+  width: clamp(80px, 11vw, 140px);
+}
+
+.fruta-arandanos {
+  bottom: 0;
+  right: 0;
+  width: clamp(90px, 12vw, 150px);
+}
+
+/* ---------- PANTALLA PRODUCTOS (4 TARJETAS) ---------- */
+
+.contenedor-inventario{
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px 120px;
+    text-align: center;
+}
+
+.titulo-inventario{
+    margin: 0 0 70px;
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--rosa-titulo);
+}
+
+/* ---------- (4 TARJETAS) ---------- */
+
+.tarjetas-inventario {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+/* 2. Ajuste a la tarjeta para que sea interactiva */
+.tarjeta-opcion {
+    background-color: #FFFFFF;
+    border: 2px solid #D65A70; /* Borde rojo/rosa */
+    border-radius: 20px;
+    width: 250px; /* Ancho ajustado para 4 tarjetas */
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    cursor: pointer; /* Muestra la "manita" para indicar que es un botón */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Efecto visual suave */
+}
+
+/* Efecto visual: la tarjeta se eleva un poco al pasar el ratón */
+.tarjeta-opcion:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* 3. Clases de colores alternados para los botones */
+.btn-verde, 
+.btn-amarillo {
+    border: none;
+    border-radius: 15px; 
+    padding: 15px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    color: #333;
+    width: 90%;
+    margin-bottom: 30px;
+    pointer-events: none; /* IMPORTANTE: Evita que el botón bloquee el clic de la tarjeta completa */
+}
+
+.btn-verde {
+    background-color: #B2D87B; /* Verde claro */
+}
+
+.btn-amarillo {
+    background-color: #F4C455; /* Amarillo/naranja */
+}
+
+.img-tarjeta {
+    max-width: 130px;
+    height: auto;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .vta-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .vta-cards {
+    grid-template-columns: 1fr;
+  }
+  .fruta {
+    opacity: 0.5;              /* que no tapen el contenido en celular */
+  }
+}

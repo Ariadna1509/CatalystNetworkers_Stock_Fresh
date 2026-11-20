@@ -143,7 +143,6 @@ public class LocatarioController {
             }
         return ResponseEntity.ok(Map.of("mensaje", "Registro exitoso"));
     }
-    
 
     @PostMapping("/login")
 

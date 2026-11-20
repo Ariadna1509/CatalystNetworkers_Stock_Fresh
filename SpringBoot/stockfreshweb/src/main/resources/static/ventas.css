@@ -1,6 +1,5 @@
 /* =========================================================
    Stock & Fresh - Registro de Ventas
-   Pega esto en tu CSS (o enlázalo con <link rel="stylesheet">)
    ========================================================= */
 
 :root {
@@ -51,7 +50,7 @@ body {
   width: clamp(90px, 12vw, 150px);
 }
 
-/* ---------- CONTENEDOR PRINCIPAL ---------- */
+/* ---------- CONTENEDOR PRINCIPAL ---------- */ 
 .vta {
   position: relative;
   z-index: 1;                  /* por encima de las frutas */
