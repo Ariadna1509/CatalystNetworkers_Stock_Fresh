@@ -25,8 +25,13 @@
 }
 
 body {
+    /*
     background-color: #ffffff;
     color: #333;
+    */
+    background-color: #F1F8D8;
+    background-image: url("logo_fondo_gris.png");
+    background-size: 700px;   /* ajusta para frutas más grandes o pequeñas */
 }
 html,body{
     height: 100%;
@@ -186,23 +191,6 @@ header {
     object-fit: cover !important;
 }
 
-/* Barra y campo de búsqueda */
-.search-bar {
-    flex-grow: 0.4;
-    max-width: 500px;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    color: #555;
-    box-sizing: border-box;
-}
-
 /* Avatar del usuario en la esquina derecha */
 .logo-usuario img, 
 .user-actions img, 
@@ -251,11 +239,11 @@ header {
     box-sizing: border-box;
 }
 
-/* Estilo general y posiciones de las frutas */
+/*
 .fruta {
     position: absolute;
     z-index: 1;
-    pointer-events: none; /* Para que no estorben al hacer clic */
+    pointer-events: none; 
 }
 
 .fruta-naranja {
@@ -293,6 +281,7 @@ header {
     right: 0px;
     width: 230px;
 }
+*/
 
 /* Texto del lado izquierdo */
 .main-content {

@@ -136,7 +136,7 @@ function inicializarFigura() {
                     localStorage.setItem('idLocatario', locatario.idLocatario);
                     actualizarNav(true);     // marca sesión activa y oculta el botón de login
                     cargarDashBoard();
-                }, 500);
+                }, 500); 
                 //SeCIÓN INHABIL 
             
             } else if (respuesta.status === 401) {

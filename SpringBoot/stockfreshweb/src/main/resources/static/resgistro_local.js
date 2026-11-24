@@ -33,7 +33,11 @@ document.addEventListener('submit', async function (e) {
             alert('¡Bienvenido, ' + data.nombre + '!');
             if (typeof cargarPerfil === 'function') {
                 console.log("Cargando perfil...")
-                cargarPerfil();
+                //Despues de que nos registramos desaparecemos el boton login y cargamos el perfil (3s)
+                setTimeout(() => {
+                    actualizarNav(true);
+                    cargarPerfil();
+                }, 300);
             }
         } else {
             const mensajeError = await answer.text();
