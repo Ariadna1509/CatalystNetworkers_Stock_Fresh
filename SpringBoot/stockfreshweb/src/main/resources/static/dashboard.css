@@ -212,7 +212,7 @@
   padding-bottom: 48px;
 }
 
-/* ===== Scroll de la página =====*/
+/* ===== Scroll de la página =====*/ 
 html:has(.dash),
 body:has(.dash) {
   height: auto;
@@ -255,3 +255,5 @@ html:has(.dash)::-webkit-scrollbar-thumb:hover { background: #5f8f2f; }
   .dash-welcome h1 { font-size: 1.8rem; }
   .dash-table { font-size: .85rem; }
 }
+
+

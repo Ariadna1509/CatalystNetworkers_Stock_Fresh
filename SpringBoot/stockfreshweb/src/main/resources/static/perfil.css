@@ -1,160 +1,140 @@
 
-.perfil-wrapper #cardCore {
-    grid-template-columns: 1.3fr 1fr;
-    gap: 35px;
-}
+/* ==========================================================
+   PERFIL — arreglos de scroll, encimado con el menú e inputs
+   ========================================================== */
 
-/* Tarjetas */
-.perfil-wrapper .card {
-    min-width: 0;
-    padding: 32px;
-}
-
-/* Distribución interior */
-.perfil-wrapper .card-content {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 28px;
-}
-
-/* Avatar e icono del local */
-.perfil-wrapper .avatar-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.perfil-wrapper .avatar-placeholder {
-    width: clamp(110px, 10vw, 150px);
+/* 1) El contenido ya no se centra con alto fijo*/
+.principal:has(.perfil-wrapper) {
+    display: block;
     height: auto;
-    aspect-ratio: 1 / 1;
-    flex-shrink: 0;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
-/* Información del perfil */
-.perfil-wrapper .profile-info-text {
+.perfil-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px clamp(12px, 4vw, 32px) 56px;   /* aire arriba y abajo */
+    box-sizing: border-box;
+    transform: none;
+}
+
+/* 2) La página hace scroll y el footer va al final, sin tapar nada */
+html:has(.perfil-wrapper),
+body:has(.perfil-wrapper) {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body:has(.perfil-wrapper) .site-footer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
     width: 100%;
+    margin-top: 0;
 }
 
+/* 3) Imagen decorativa rota */
+img[alt="Aguacate"] {
+    display: none;
+}
+
+/* 4) Datos de la izquierda (Nombre e ID de Locatario):
+      etiqueta arriba, campo debajo, con el mismo estilo que los de la derecha */
 .perfil-wrapper .profile-info-text p {
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    margin: 0 0 14px;
 }
 
 .perfil-wrapper .profile-info-text strong {
-    white-space: normal;
+    font-size: .9rem;
+    color: #3a3a3a;
 }
 
 .perfil-wrapper .profile-info-text input {
-    flex: 1 1 90px;
-    min-width: 70px;
-}
-
-/* Formulario */
-.perfil-wrapper .profile-right {
+    flex: none;
     width: 100%;
-    gap: 24px;
-}
-
-.perfil-wrapper .form-control {
     min-width: 0;
+    box-sizing: border-box;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: .95rem;
+    color: #2b2b2b;
+    background: #fafbf5;
+    border: 2px solid #e3e8d5;
+    border-radius: 12px;
+    outline: none;
 }
 
-/* Botones */
+/* campos de solo lectura (ID, nombre) se ven más apagados */
+.perfil-wrapper .profile-info-text input[readonly],
+.perfil-wrapper .profile-info-text input:disabled {
+    background: #f1f4e6;
+    color: #5a5f4d;
+    cursor: default;
+}
+
+/* 5) Foco bonito en todos los campos del perfil */
+.perfil-wrapper input:focus {
+    border-color: #6a9b34;
+    box-shadow: 0 0 0 4px rgba(151, 192, 83, .25);
+}
+
+/* 6) Botones: si no caben en una fila, bajan en vez de desbordarse */
 .perfil-wrapper .card-actions {
-    gap: 16px;
-    margin-top: 28px;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .perfil-wrapper .left-buttons,
 .perfil-wrapper .right-buttons {
-    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.perfil-wrapper .btn {
-    padding: 10px 20px;
-    white-space: nowrap;
-}
+/* ==========================================================
+   PERFIL — tarjetas "Tu Perfil" y "Local" en la misma fila
+   ========================================================== */
 
-/* Tarjeta Local */
-.perfil-wrapper #card2 .card-content {
-    grid-template-columns: 1fr;
-}
+/* Pantallas anchas: una fila con dos columnas */
+@media (min-width: 1000px) {
+    .perfil-wrapper {
+        width: 100%;
+        max-width: 1240px;          /* más ancho para que quepan las dos */
+    }
 
-.perfil-wrapper #card2 .avatar-placeholder {
-    width: clamp(110px, 10vw, 145px);
-}
-
-@media (min-width: 761px) {
     .perfil-wrapper #cardCore {
-        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 28px;
+        align-items: start;         /* cada tarjeta con su propio alto */
+        width: 100%;
+        max-width: none;
+    }
+
+    .perfil-wrapper #cardCore > * {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        margin: 0;
+    }
+}
+
+/* Pantallas medianas y chicas: una debajo de otra */
+@media (max-width: 999px) {
+    .perfil-wrapper #cardCore {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
         gap: 24px;
-        align-items: stretch;
-    }
-
-    .perfil-wrapper .card {
-        padding: 24px;
-    }
-
-    .perfil-wrapper .card-content {
-        gap: 18px;
-    }
-
-    .perfil-wrapper .avatar-placeholder {
-        width: 110px;
-        height: 110px;
-    }
-
-    .perfil-wrapper .profile-left {
-        gap: 18px;
-    }
-
-    .perfil-wrapper .card-actions {
-        margin-top: 20px;
-    }
-
-    .perfil-wrapper .left-buttons,
-    .perfil-wrapper .right-buttons {
-        gap: 8px;
-    }
-
-    .perfil-wrapper .btn {
-        padding: 9px 14px;
-        font-size: .85rem;
-    }
-}
-
-@media (max-width: 760px) {
-    .perfil-wrapper #cardCore {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 700px) {
-    .perfil-wrapper .card-content {
-        grid-template-columns: 1fr;
-    }
-
-    .perfil-wrapper .profile-left {
-        width: 100%;
-    }
-
-    .perfil-wrapper .profile-info-text {
-        width: 100%;
-    }
-
-    .perfil-wrapper .card-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .perfil-wrapper .left-buttons,
-    .perfil-wrapper .right-buttons {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .perfil-wrapper .btn {
-        width: 100%;
+        max-width: 640px;
+        margin: 0 auto;
     }
 }

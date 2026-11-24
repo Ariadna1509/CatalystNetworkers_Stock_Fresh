@@ -229,6 +229,18 @@ header {
    CONTENIDO PRINCIPAL (MAIN) Y FRUTAS FLOTANTES
    ========================================== */
 .principal {
+    background: linear-gradient(rgba(255, 251, 239, 0.7), rgba(255, 251, 239, 0.7)), 
+                url("fondo-3-durazno.png") center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 120px;
+    width: 100%;
+    max-width: 100%;
+    height: calc(100vh - 120px);
+    position: relative;
+    box-sizing: border-box;
+    /*
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -1,6 +1,26 @@
 /* ==========================================
    CONTENEDOR DEL LOGIN
    ========================================== */
+
+/*
+.login-figuritas {
+    background: linear-gradient(rgba(255, 251, 239, 0.7), rgba(255, 251, 239, 0.7)),
+                url("fondo-login-collage.png") center / cover no-repeat;
+    display: flex;
+    flex-wrap: wrap;                  
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;    
+    gap: 24px 40px;
+    padding: 24px clamp(16px, 6vw, 120px);
+    width: 100%;
+    min-height: calc(100vh - 120px);  
+    height: auto;
+    position: relative;
+    box-sizing: border-box;
+}
+*/
+
 .login-figuritas {
     display: flex;
     gap: 60px;
@@ -17,6 +37,12 @@
     height: 330px;
     flex-shrink: 0;
 }
+
+/* Escala el escenario de las frutas en pantallas chicas */
+@media (max-width: 600px) { .stage { zoom: .85; } }
+@media (max-width: 480px) { .stage { zoom: .70; } }
+@media (max-width: 400px) { .stage { zoom: .60; } }
+@media (max-width: 360px) { .stage { zoom: .52; } }
 
 /* ==========================================
    FRUTAS
@@ -147,40 +173,216 @@
     .figure_1.sacudir, .figure_1.salta { animation: none; }
 }
 
-.stageII{
-    width: auto;
-    height: 500px;
-    background: #ebe6e7;
-    border-radius: 23px;
+/* ==========================================
+   TARJETA DEL FORMULARIO
+   ========================================== */
+.stageII {
+    position: relative;
+    width: min(380px, 100%);
+    height: auto;                 /* se ajusta al contenido */
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, .92);
+    border: 1px solid rgba(151, 192, 83, .35);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(79, 125, 36, .18),
+                0 4px 12px rgba(0, 0, 0, .06);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    overflow: hidden;
 }
-.login-figuritas form { 
+
+/* franja superior con los colores del menú */
+.stageII::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 8px;
+    background: linear-gradient(90deg,
+        #e2b84f 0 20%, #cb5c6c 20% 40%, #5fa058 40% 60%,
+        #2556ae 60% 80%, #a82e2a 80% 100%);
+}
+
+.login-figuritas form {
     display: flex;
     flex-direction: column;
-    gap: 14px; 
-    width: 300px; 
-    padding: 32px; 
-    border-radius: 20px; 
+    gap: 16px;
+    width: 100%;
+    padding: 48px 36px 38px;
+    box-sizing: border-box;
 }
-.login-figuritas input { 
-    padding: 15px; 
-    font-size: 1rem; 
-    border: 2px solid #ccc; 
-    border-radius: 10px; 
+
+.login-figuritas form :is(h1, h2, h3) {
+    margin: 0 0 8px;
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: -.5px;
+    color: #2b2b2b;
 }
-.login-figuritas .field-pass { 
-    display: flex; 
-    gap: 8px; 
+.login-figuritas form :is(h1, h2, h3)::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 5px;
+    margin-top: 10px;
+    border-radius: 99px;
+    background: #97c053;
 }
-.login-figuritas .field-pass input { 
-    flex: 1; 
-    min-width: 0; 
+
+/* ===== Inputs ===== */
+.login-figuritas input {
+    padding: 15px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #2b2b2b;
+    background: #fafbf5;
+    border: 2px solid #e3e8d5;
+    border-radius: 14px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, background .2s;
 }
-.login-figuritas button { 
-    padding: 12px; 
-    font-size: 1rem; 
-    border: 0; 
-    border-radius: 99px; 
-    background: #111; 
-    color: #fff; 
-    cursor: pointer; 
+.login-figuritas input::placeholder { color: #9a9f8c; }
+.login-figuritas input:hover        { border-color: #cddaa8; }
+.login-figuritas input:focus {
+    background: #fff;
+    border-color: #6a9b34;
+    box-shadow: 0 0 0 4px rgba(151, 192, 83, .28);
 }
+
+/* ===== Contraseña + botón "Ver" ===== */
+.login-figuritas .field-pass {
+    display: flex;
+    gap: 8px;
+}
+.login-figuritas .field-pass input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ===== Botones ===== */
+.login-figuritas button {
+    font-family: inherit;
+    cursor: pointer;
+    border: 0;
+    border-radius: 99px;
+}
+.login-figuritas .field-pass button {
+    padding: 0 20px;
+    font-size: .95rem;
+    font-weight: 700;
+    color: #4f7d24;
+    background: #eef5df;
+    border: 2px solid #dbe8bd;
+    transition: background .2s;
+}
+.login-figuritas .field-pass button:hover { background: #e0edc4; }
+
+.login-figuritas form > button {
+    margin-top: 8px;
+    padding: 15px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+    color: #fff;
+    background: linear-gradient(135deg, #6a9b34, #4f7d24);
+    box-shadow: 0 8px 18px rgba(79, 125, 36, .35);
+    transition: transform .15s, box-shadow .15s, filter .15s;
+}
+.login-figuritas form > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(79, 125, 36, .4);
+    filter: brightness(1.05);
+}
+.login-figuritas form > button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(79, 125, 36, .3);
+}
+.login-figuritas button:focus-visible {
+    outline: 3px solid rgba(37, 86, 174, .5);
+    outline-offset: 2px;
+}
+
+/* ==========================================
+   SCROLL EN LA PÁGINA DE LOGIN
+   ========================================== */
+.principal:has(> .login-figuritas) {
+    display: block;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+}
+
+html:has(.login-figuritas),
+body:has(.login-figuritas) {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body:has(.login-figuritas) .site-footer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    margin-top: 0;
+}
+
+/*
+===========================
+        Scroll Bar
+===========================
+*/
+
+.principal:has(> .dash) {
+  display: block;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dash {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  transform: none;
+  padding-bottom: 48px;
+}
+
+/* ===== Scroll de la página =====*/
+html:has(.dash),
+body:has(.dash) {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body:has(.dash) .site-footer {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: 100%;
+  margin-top: 0;
+}
+
+/* Scroll bar */
+html:has(.dash) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--d-green-header, #97c053) #eef5df;
+}
+html:has(.dash)::-webkit-scrollbar { width: 12px; }
+html:has(.dash)::-webkit-scrollbar-track { background: #eef5df; }
+html:has(.dash)::-webkit-scrollbar-thumb {
+  background: #97c053;
+  border-radius: 10px;
+  border: 2px solid #eef5df;
+}
+html:has(.dash)::-webkit-scrollbar-thumb:hover { background: #5f8f2f; }

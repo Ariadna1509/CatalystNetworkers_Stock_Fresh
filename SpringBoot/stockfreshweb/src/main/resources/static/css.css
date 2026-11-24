@@ -25,13 +25,8 @@
 }
 
 body {
-    /*
     background-color: #ffffff;
     color: #333;
-    */
-    background-color: #F1F8D8;
-    background-image: url("logo_fondo_gris.png");
-    background-size: 700px;   /* ajusta para frutas más grandes o pequeñas */
 }
 html,body{
     height: 100%;
@@ -46,9 +41,6 @@ html,body{
 header {
     width: 100%;
 }
-
-
-
 .header-top {
     background-color: #8CBF3F;
     display: flex;
@@ -58,32 +50,27 @@ header {
     height: 75px;
     box-sizing: border-box;
 }
-
 .logo-container {
     display: flex;
     align-items: center;
     gap: 12px;
 }
-
 .logo-container img {
     border-radius: 50%;
     object-fit: cover;
     width: 45px;
     height: 45px;
 }
-
 .logo-container span {
     color: #ffffff;
     font-size: 22px;
     font-weight: 600;
     font-family: serif;
 }
-
 .search-bar {
     flex-grow: 0.4;
     max-width: 500px;
 }
-
 .search-bar input {
     width: 100%;
     padding: 10px 20px;
@@ -94,14 +81,12 @@ header {
     color: #555;
     box-sizing: border-box;
 }
-
 .logo-usuario img {
     width: 45px;
     height: 45px;
     cursor: pointer;
     border-radius: 50%;
 }
-
 .iniciosesion {
     background-color: #72A633;
     color: #ffffff;
@@ -112,11 +97,9 @@ header {
     font-weight: bold;
     cursor: pointer;
 }
-
 .iniciosesion:hover {
     background-color: #5f8d29;
 }
-
 .cart {
     background-color: #ffffff;
     color: #333333;
@@ -127,7 +110,6 @@ header {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: inline-block;
 }
-
 /* ==========================================
    NAVEGACIÓN (MENÚ DE COLORES)
    ========================================== */
@@ -135,19 +117,16 @@ header {
     width: 100%;
     background-color: #EBB832;
 }
-
 .header-nav ul {
     display: flex;
     list-style: none;
     width: 100%;
     height: 55px;
 }
-
 .header-nav ul li {
     flex: 1;
     display: flex;
 }
-
 .header-nav ul li a {
     width: 100%;
     display: flex;
@@ -160,19 +139,13 @@ header {
     text-align: center;
     padding: 0 10px;
 }
-
 /* Colores de las pestañas */
 .header-nav ul li:nth-child(1) { background-color: #EBB832; }
 .header-nav ul li:nth-child(2) { background-color: #DB5461; }
 .header-nav ul li:nth-child(3) { background-color: #48A14D; }
 .header-nav ul li:nth-child(4) { background-color: #0056B3; }
 .header-nav ul li:nth-child(5) { background-color: #B22222; }
-/*
-.header-nav .status {
-    pointer-events: none;
-    cursor: not-allowed;
-}
-*/
+
 .header-nav a.nav-disabled {
     opacity: 0.4;
     cursor: not-allowed;
@@ -190,7 +163,6 @@ header {
     border-radius: 50% !important;
     object-fit: cover !important;
 }
-
 /* Avatar del usuario en la esquina derecha */
 .logo-usuario img, 
 .user-actions img, 
@@ -203,15 +175,13 @@ header {
     object-fit: cover !important;
     cursor: pointer;
 }
-
 /* Agrupa los elementos de la derecha ordenados en fila */
 .user-actions {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-
-/* Control estricto para que la foto de usuario mantenga su tamaño redondo de 45px */
+/* Control estricto para que la foto de usuario mantenga su tamaño redondo */
 .logo-usuario img, 
 .avatar {
     width: 45px !important;
@@ -222,23 +192,22 @@ header {
     object-fit: cover !important;
     cursor: pointer;
 }
-
-
 /* ==========================================
-   CONTENIDO PRINCIPAL (MAIN) Y FRUTAS FLOTANTES
+   CONTENIDO PRINCIPAL (MAIN)
    ========================================== */
 .principal {
+    background: linear-gradient(rgba(255, 251, 239, 0.7), rgba(255, 251, 239, 0.7)), 
+                url("fondo-1-crema.png") center / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 120px; /* Aumentamos el padding lateral para que el texto/logo respire */
+    padding: 10px 120px;
     width: 100%;
     max-width: 100%;
-    height: calc(100vh - 120px); /* Ajuste preciso para que el footer no se corte */
+    height: calc(100vh - 120px);
     position: relative;
     box-sizing: border-box;
 }
-
 /*
 .fruta {
     position: absolute;
@@ -282,14 +251,12 @@ header {
     width: 230px;
 }
 */
-
 /* Texto del lado izquierdo */
 .main-content {
     max-width: 480px;
     z-index: 2;
     margin-left: 90px;
 }
-
 .main-content h1 {
     font-size: 38px;
     color: #000000;
@@ -297,19 +264,16 @@ header {
     line-height: 1.2;
     margin-bottom: 20px;
 }
-
 .main-content p {
     font-size: 16px;
     color: #444444;
     line-height: 1.6;
     margin-bottom: 35px;
 }
-
 .main-buttons {
     display: flex;
     gap: 20px;
 }
-
 .btn-iniciar {
     background-color: #D9536F;
     color: #ffffff;
@@ -322,12 +286,10 @@ header {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.2s, background-color 0.2s;
 }
-
 .btn-iniciar:hover {
     background-color: #c4435e;
     transform: translateY(-2px);
 }
-
 /* Lado Derecho - Círculo Logo */
 .main-image-container {
     display: flex;
@@ -336,7 +298,6 @@ header {
     z-index: 2;
     margin-right: 80px;
 }
-
 .circle-logo {
     width: 380px;
     height: 380px;
@@ -348,7 +309,6 @@ header {
     justify-content: center;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
-
 .circle-logo img {
     width: 100%;
     height: 100%;
@@ -366,37 +326,32 @@ header {
     bottom: 0;
     width: 100%;
 }
-
 .footer-links {
     display: flex;
     justify-content: center;
     gap: 30px;
     margin-bottom: 4px;
 }
-
 .footer-links a {
     color: #4A6B1A;
     text-decoration: underline;
     font-size: 14px;
     font-weight: 600;
 }
-
 .footer-copy p {
     font-size: 12px;
     color: #3b5712;
     margin: 0;
 }
 
-
-/*vemos que pasa2*/
-
-/* Contenedor del formulario */
+/* ==========================================
+   CONTENEDOR DEL FORMULARIO
+   ========================================== */
 
 .main-content.main-form-container{
     position: relative;
     z-index: 2;
 }
-
 .main-form-container{
     position: relative;
     z-index: 2;
@@ -405,7 +360,6 @@ header {
     border-radius: 15px;
     padding: 30px;
 }
-
 .main-form-container {
     display: flex;
     flex-direction: column;
@@ -414,17 +368,6 @@ header {
     margin: 0 auto;
     width: 100%;
 }
-/*posicion pera en registro*/
-.fruta-pera-2{
-    position: absolute; /* Asegúrate de que tenga posición absoluta */
-    top: 0%;           /* O la posición vertical que ya tengas */
-    left: 45%;          /* O la posición horizontal que ya tengas */
-    width: 190px;       /* Tamaño que desees */
-    z-index: 1;         /* Un número bajo para que se quede al fondo */
-    pointer-events: none;
-}
-
-/* Etiquetas de los campos */
 .main-form-container label {
     font-family: Arial, sans-serif;
     font-weight: bold;
@@ -456,7 +399,6 @@ header {
     border-color: #78c257; /* Tono verde principal de Stock & Fresh */
     box-shadow: 0 0 5px rgba(120, 194, 87, 0.3);
 }
-
 /* Botón de Iniciar Sesión */
 .btn-enviar-sesion {
     background-color: #d9534f; /* O el color rojo/coral que usa tu botón de diseño actual */
@@ -470,12 +412,9 @@ header {
     transition: background-color 0.3s ease;
     margin-top: 10px;
 }
-
 .btn-enviar-sesion:hover {
     background-color: #c9302c;
 }
-
-/* Contenedor principal centrado */
 .main-vertical-container {
     display: flex;
     flex-direction: column;
@@ -485,30 +424,25 @@ header {
     max-width: 700px;
     margin: 0 auto;
 }
-
 .main-content-top {
     margin-bottom: 30px;
 }
-
 .main-content-top h1 {
     font-size: 26px;
     font-weight: bold;
     color: #111111;
     margin-bottom: 12px;
 }
-
 .main-content-top p {
     font-size: 15px;
     color: #333333;
     line-height: 1.5;
 }
-
 /* Contenedor del formulario */
 .main-form-container-bottom {
     width: 100%;
     max-width: 450px;
 }
-
 /* Agrupación de cada input con su etiqueta */
 .form-group {
     display: flex;
@@ -516,14 +450,12 @@ header {
     text-align: left;
     margin-bottom: 20px;
 }
-
 .form-group label {
     font-weight: bold;
     color: #111111;
     margin-bottom: 8px;
     font-size: 14px;
 }
-
 /* Estilo de los campos de texto */
 .form-group input[type="text"],
 .form-group input[type="password"] {
@@ -536,7 +468,6 @@ header {
     color: #333333;
     outline: none;
 }
-
 /* Botón de Registro centrado */
 .btn-enviar-sesion {
     display: block;
@@ -553,11 +484,9 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .btn-enviar-sesion:hover {
     background-color: #c9302c;
 }
-
 .perfil-wrapper {
         display: flex;
         justify-content: center;

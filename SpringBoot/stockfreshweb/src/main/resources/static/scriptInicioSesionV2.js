@@ -19,11 +19,10 @@
             `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`; //Modificamos el CSS (por defaoult las pupilas ya estan centradas: transform: translate(-50%, -50%);)
             //solo cambiamos los valores de x & y 
     }); */
-
 let figureAbort = null;
 function oculatarElementos(){
     buttonLogin.style.display = "none";
-    buttonHome.onclick = function() {
+    buttonHome.onclick = function() { 
         cargarDashBoard();
     }
 }
