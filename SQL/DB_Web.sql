@@ -122,9 +122,17 @@ CREATE TABLE IF NOT EXISTS MOVIMIENTO (
 CREATE TABLE IF NOT EXISTS CAJA_COBRO (
    idCajaCobro             INT             AUTO_INCREMENT NOT NULL,
    idLocal                 INT             NOT NULL,
+   idLocatario             VARCHAR(50)     NOT NULL,
+   usuario        VARCHAR(50)  NOT NULL UNIQUE,
+   nombre         VARCHAR(100) NOT NULL,
+   contrasena     VARCHAR(100) NOT NULL,
+   estado         VARCHAR(20)  NOT NULL DEFAULT 'DESCONECTADA',
+   sesionActual   VARCHAR(100) NULL,
+   fechaSolicitud DATETIME     NULL,
    status                  VARCHAR(50)     NOT NULL DEFAULT 'Inactiva',
    CONSTRAINT pk_id_cajacobro PRIMARY KEY (idCajaCobro),
-   CONSTRAINT fk_cajacobro_local FOREIGN KEY (idLocal) REFERENCES LOCAL(idLocal) ON UPDATE CASCADE ON DELETE RESTRICT
+   CONSTRAINT fk_cajacobro_local FOREIGN KEY (idLocal) REFERENCES LOCAL(idLocal) ON UPDATE CASCADE ON DELETE RESTRICT,
+   CONSTRAINT fk_caja_locatario FOREIGN KEY (idLocatario) REFERENCES LOCATARIO(idLocatario)
 );
 
 CREATE TABLE IF NOT EXISTS OPERACION (
@@ -335,11 +343,12 @@ CREATE TABLE IF NOT EXISTS RECETA_UTENSILIO (
    CONSTRAINT fk_recut_utensilio FOREIGN KEY (idUtensilio) REFERENCES UTENSILIO(idUtensilio)
 );
 
-DROP ROLE IF EXISTS 'rol_admin', 'rol_locatario', 'rol_cliente';
+DROP ROLE IF EXISTS 'rol_admin', 'rol_locatario', 'rol_cliente', 'rol_caja';
  
 CREATE ROLE 'rol_admin';
 CREATE ROLE 'rol_locatario';
 CREATE ROLE 'rol_cliente';
+CREATE ROLE 'rol_caja';
  
 -- ------------------------------------------------------------
 -- 1. PERMISOS PARA ADMIN
@@ -395,6 +404,11 @@ GRANT SELECT                         ON stock_fresh_web.INGREDIENTE_UNIDAD   TO 
 GRANT SELECT, INSERT, DELETE         ON stock_fresh_web.INGREDIENTE_PRODUCTO TO 'rol_cliente';
 GRANT SELECT, INSERT                 ON stock_fresh_web.UTENSILIO            TO 'rol_cliente';
 GRANT SELECT, INSERT, DELETE         ON stock_fresh_web.RECETA_UTENSILIO     TO 'rol_cliente';
+
+-- ------------------------------------------------------------
+-- 3.1. PERMISOS PARA CAJA
+-- ------------------------------------------------------------
+GRANT ALL PRIVILEGES ON stock_fresh_web.* TO 'rol_caja';
  
 -- ------------------------------------------------------------
 -- 4. USUARIOS
@@ -402,6 +416,7 @@ GRANT SELECT, INSERT, DELETE         ON stock_fresh_web.RECETA_UTENSILIO     TO 
 CREATE USER IF NOT EXISTS 'admin1'@'localhost'      IDENTIFIED BY '123';
 CREATE USER IF NOT EXISTS 'locatario1'@'localhost'  IDENTIFIED BY '321';
 CREATE USER IF NOT EXISTS 'cliente1'@'localhost'    IDENTIFIED BY '213';
+CREATE USER IF NOT EXISTS 'caja1'@'localhost'       IDENTIFIED BY '199';
 CREATE USER IF NOT EXISTS 'login'@'localhost'       IDENTIFIED BY '999';
  
 -- Cuenta exclusiva para el login
@@ -411,18 +426,25 @@ GRANT SELECT (idCliente, nombre, correoElectronico, contrasena)
    ON stock_fresh_web.CLIENTE   TO 'login'@'localhost';
 GRANT SELECT (idLocal, idLocatario)
    ON stock_fresh_web.LOCAL     TO 'login'@'localhost';
- 
+GRANT SELECT (idCajaCobro, idLocal, status)
+   ON stock_fresh_web.CAJA_COBRO TO 'login'@'localhost';
+
 -- ------------------------------------------------------------
 -- 5. ASIGNACIÓN DE ROLES
 -- ------------------------------------------------------------
 GRANT 'rol_admin'     TO 'admin1'@'localhost';
 GRANT 'rol_locatario' TO 'locatario1'@'localhost';
 GRANT 'rol_cliente'   TO 'cliente1'@'localhost';
+GRANT 'rol_caja'      TO 'caja1'@'localhost';
  
 SET DEFAULT ROLE 'rol_admin'     TO 'admin1'@'localhost';
 SET DEFAULT ROLE 'rol_locatario' TO 'locatario1'@'localhost';
 SET DEFAULT ROLE 'rol_cliente'   TO 'cliente1'@'localhost';
+SET DEFAULT ROLE 'rol_caja'      TO 'caja1'@'localhost';
 
 SELECT CURRENT_ROLE();  
-SELECT CURRENT_ROLE();  
+SELECT CURRENT_ROLE(); 
 SELECT * FROM LOCATARIO;
+SELECT * FROM LOCAL;
+SELECT * FROM CAJA_COBRO;
+INSERT INTO CAJA_COBRO (idLocal) VALUE (1);

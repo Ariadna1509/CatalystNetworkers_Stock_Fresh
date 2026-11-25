@@ -11,7 +11,7 @@
     max-height: none;
     overflow: visible;
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 0; 
 }
 
 .perfil-wrapper {
@@ -24,7 +24,7 @@
 
 /* 2) La página hace scroll y el footer va al final, sin tapar nada */
 html:has(.perfil-wrapper),
-body:has(.perfil-wrapper) {
+body:has(.perfil-wrapper) { 
     height: auto;
     min-height: 100%;
     overflow-y: auto;
@@ -83,7 +83,6 @@ img[alt="Aguacate"] {
     cursor: default;
 }
 
-/* 5) Foco bonito en todos los campos del perfil */
 .perfil-wrapper input:focus {
     border-color: #6a9b34;
     box-shadow: 0 0 0 4px rgba(151, 192, 83, .25);

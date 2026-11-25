@@ -20,7 +20,7 @@
     box-sizing: border-box;
 }
 */
-
+ 
 .login-figuritas {
     display: flex;
     gap: 60px;
@@ -176,6 +176,7 @@
 /* ==========================================
    TARJETA DEL FORMULARIO
    ========================================== */
+
 .stageII {
     position: relative;
     width: min(380px, 100%);
@@ -305,6 +306,7 @@
 /* ==========================================
    SCROLL EN LA PÁGINA DE LOGIN
    ========================================== */
+
 .principal:has(> .login-figuritas) {
     display: block;
     height: auto;
@@ -337,7 +339,7 @@ body:has(.login-figuritas) .site-footer {
 */
 
 .principal:has(> .dash) {
-  display: block;
+  display: block; 
   height: auto;
   min-height: 0;
   max-height: none;
@@ -369,7 +371,7 @@ body:has(.dash) .site-footer {
   bottom: auto;
   left: auto;
   right: auto;
-  width: 100%;
+  width: 100%; 
   margin-top: 0;
 }
 
