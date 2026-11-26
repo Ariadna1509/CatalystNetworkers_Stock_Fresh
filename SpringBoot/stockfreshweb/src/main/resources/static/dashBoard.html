@@ -7,8 +7,8 @@
       <p>Resumen del día de tu negocio: ventas, créditos e inventario en un solo lugar.</p>
     </div>
     <div class="dash-welcome-buttons">
-      <button class="dash-btn" onclick="location.href='ventasInfoPage.html'">+ Nueva venta</button>
-      <button class="dash-btn" onclick="location.href='gestionInventarioInfoPage.html'">+ Nuevo producto</button>
+      <button class="dash-btn" onclick="cargarRegistrarVenta()">+ Nueva venta</button>
+      <button class="dash-btn" onclick="cargarRegistrarProducto()">+ Nuevo producto</button>
     </div>
   </section>
 
@@ -16,28 +16,28 @@
   <section class="dash-kpis">
     <article class="dash-kpi dash-yellow">
       <span class="dash-kpi-label">Ventas de hoy</span>
-      <strong class="dash-kpi-value" id="kpiVentas">$ 4,250.00</strong>
-      <span class="dash-kpi-note">+12% vs. ayer</span>
+      <strong class="dash-kpi-value" id="kpiVentas">$ 0.00</strong>
+      <span class="dash-kpi-note">+0% vs. ---</span>
     </article>
     <article class="dash-kpi dash-pink">
       <span class="dash-kpi-label">Caja actual</span>
-      <strong class="dash-kpi-value" id="kpiCaja">$ 8,900.00</strong>
+      <strong class="dash-kpi-value" id="kpiCaja">$ 0.00</strong>
       <span class="dash-kpi-note">Turno abierto</span>
     </article>
     <article class="dash-kpi dash-green">
       <span class="dash-kpi-label">Productos en stock</span>
-      <strong class="dash-kpi-value" id="kpiStock">326</strong>
-      <span class="dash-kpi-note">8 con stock bajo</span>
+      <strong class="dash-kpi-value" id="kpiStock">0</strong>
+      <span class="dash-kpi-note">--- stock </span>
     </article>
     <article class="dash-kpi dash-blue">
       <span class="dash-kpi-label">Transacciones</span>
-      <strong class="dash-kpi-value" id="kpiTransacciones">47</strong>
+      <strong class="dash-kpi-value" id="kpiTransacciones">0</strong>
       <span class="dash-kpi-note">Hoy</span>
     </article>
     <article class="dash-kpi dash-red">
       <span class="dash-kpi-label">Créditos pendientes</span>
-      <strong class="dash-kpi-value" id="kpiCreditos">$ 1,320.00</strong>
-      <span class="dash-kpi-note">5 clientes</span>
+      <strong class="dash-kpi-value" id="kpiCreditos">$ 0.00</strong>
+      <span class="dash-kpi-note">0 clientes</span>
     </article>
   </section>
 
@@ -47,24 +47,26 @@
     <article class="dash-card">
       <h2>Ventas de la semana</h2>
       <div class="dash-chart">
-        <div class="dash-bar" style="--h:55%"><span>Lun</span></div>
-        <div class="dash-bar" style="--h:70%"><span>Mar</span></div>
-        <div class="dash-bar" style="--h:45%"><span>Mié</span></div>
-        <div class="dash-bar" style="--h:85%"><span>Jue</span></div>
-        <div class="dash-bar dash-bar-active" style="--h:95%"><span>Vie</span></div>
-        <div class="dash-bar" style="--h:60%"><span>Sáb</span></div>
-        <div class="dash-bar" style="--h:30%"><span>Dom</span></div>
+        <div class="dash-bar" style="--h:0%"><span>Lun</span></div>
+        <div class="dash-bar" style="--h:0%"><span>Mar</span></div>
+        <div class="dash-bar" style="--h:0%"><span>Mié</span></div>
+        <div class="dash-bar" style="--h:0%"><span>Jue</span></div>
+        <div class="dash-bar dash-bar-active" style="--h:0%"><span>Vie</span></div>
+        <div class="dash-bar" style="--h:0%"><span>Sáb</span></div>
+        <div class="dash-bar" style="--h:0%"><span>Dom</span></div>
       </div>
     </article>
 
     <article class="dash-card">
       <h2>Stock bajo</h2>
       <ul class="dash-stock-list">
+        <!--
         <li><span>🍎 Manzana roja</span><b class="dash-tag dash-tag-red">3 kg</b></li>
         <li><span>🥕 Zanahoria</span><b class="dash-tag dash-tag-red">5 kg</b></li>
         <li><span>🍐 Pera</span><b class="dash-tag dash-tag-yellow">9 kg</b></li>
         <li><span>🥑 Aguacate</span><b class="dash-tag dash-tag-yellow">12 kg</b></li>
         <li><span>🫐 Arándano</span><b class="dash-tag dash-tag-yellow">10 pz</b></li>
+        -->
       </ul>
       <a href="gestionInventarioInfoPage.html" class="dash-link">Ver inventario completo</a>
     </article>
@@ -76,10 +78,12 @@
           <tr><th>#</th><th>Cliente</th><th>Método</th><th>Total</th><th>Estado</th></tr>
         </thead>
         <tbody>
+          <!--
           <tr><td>1045</td><td>Mostrador</td><td>Efectivo</td><td>$ 180.00</td><td><span class="dash-tag dash-tag-green">Pagado</span></td></tr>
           <tr><td>1044</td><td>María López</td><td>Crédito</td><td>$ 320.00</td><td><span class="dash-tag dash-tag-red">Pendiente</span></td></tr>
           <tr><td>1043</td><td>Mostrador</td><td>Tarjeta</td><td>$ 95.50</td><td><span class="dash-tag dash-tag-green">Pagado</span></td></tr>
           <tr><td>1042</td><td>Juan Pérez</td><td>Crédito</td><td>$ 410.00</td><td><span class="dash-tag dash-tag-yellow">Parcial</span></td></tr>
+          -->
         </tbody>
       </table>
     </article>
@@ -87,11 +91,11 @@
     <article class="dash-card">
       <h2>Accesos rápidos</h2>
       <div class="dash-quick">
-        <a href="ventasInfoPage.html" class="dash-quick-item dash-yellow">Registro de Ventas</a>
-        <a href="cajaInfoPage.html" class="dash-quick-item dash-pink">Caja</a>
-        <a href="gestionInventarioInfoPage.html" class="dash-quick-item dash-green">Inventario</a>
-        <a href="historialInfoPage.html" class="dash-quick-item dash-blue">Historial</a>
-        <a href="reportesInfoPage.html" class="dash-quick-item dash-red">Reportes</a>
+        <button onclick="cargarProductos()" class="dash-quick-item dash-yellow">Registro de Ventas</button>
+        <button onclick="cargarProductos()" class="dash-quick-item dash-pink">Caja</button>
+        <button onclick="cargarProductos()" class="dash-quick-item dash-green">Inventario</button>
+        <button onclick="cargarProductos()" class="dash-quick-item dash-blue">Historial</button>
+        <button onclick="cargarProductos()"class="dash-quick-item dash-red">Reportes</button>
       </div>
     </article>
 

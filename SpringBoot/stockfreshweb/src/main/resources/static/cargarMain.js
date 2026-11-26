@@ -6,6 +6,11 @@ const RUTAS_NAV = {
     historialInfo: 'historial.html',
     reportesInfo: 'reportesyg.html' 
 };
+const ACCIONES = {
+    login: cargarLogin,
+    registro: cargarRegistro,
+    perfil: verPerfil
+};
 
 //=======================================
 //         FUNCIONA NO TOCAR!!
@@ -27,16 +32,10 @@ function forzarIndex(action){
 
 function ejecutarAccionPendiente(){
     const action = sessionStorage.getItem('accionPendiente');
-    if(!action){
-        return;
-    }
+    if(!action) return;
     sessionStorage.removeItem('accionPendiente');
 
-    if(action === 'login'){
-        cargarLogin();
-    } else {
-        cargarRegistro();
-    }
+    if(ACCIONES[action]) ACCIONES[action]();
 }
 document.addEventListener('DOMContentLoaded', ejecutarAccionPendiente);
 
@@ -98,8 +97,13 @@ async function cargarPerfil() {
     }
 }
 
-function verPerfil() {
-    cargarPerfil();
+async function cargarPerfilInfoPage() {
+    console.log("Cargando Página Información de Perfil...");
+    try{
+        await cargarVista('perfilInfoPage.html');
+    } catch (error) {
+        console.error('Error al cargar la vista:', error);
+    }
 }
 /* 
 async function AperturaCaja() {
@@ -156,9 +160,9 @@ function actualizarNav(logueado) {
     if (login) login.style.display = logueado ? 'none' : '';
 }
 
-function irHome() {
+async function irHome() {
     if (sesionActiva) {
-        cargarDashBoard();
+        return await cargarDashBoard();
     } else {
         cargarMain();
     }
@@ -173,7 +177,31 @@ async function cargarDashBoard() {
     }
 }
 
-async function verificarSesion() {
+async function verPerfil() {
+    // Si estás en otra página (no index), vuelve al index y reintenta ahí
+    if (forzarIndex('perfil')) return;
+
+    // 1. Averiguar si hay sesión (sin redirigir a nadie)
+    let logueado = false;
+    try {
+        const r = await fetch(API_BASE + '/api/locatarios/me', { credentials: 'include' });
+        logueado = r.ok;
+    } catch (e) {
+        logueado = false;
+    }
+
+    // 2. Actualiza sesionActiva y el nav
+    actualizarNav(logueado);
+
+    // 3. Carga la vista que corresponde
+    if (logueado) {
+        await cargarPerfil();
+    } else {
+        await cargarPerfilInfoPage();
+    }
+}
+
+async function verificarSesion() { 
     actualizarNav(false); // estado seguro mientras responde el backend
     try {
         const r = await fetch(API_BASE + '/api/locatarios/me', { credentials: 'include' });
@@ -218,6 +246,13 @@ async function cargarRegistrarProducto(){
     try{
         await cargarVista('productoRegistro.html');
     } catch (error){
+        console.error('Error', error);
+    }
+}
+async function cargarRegistrarVenta() {
+    try{
+        await cargarVista('RegistrarVenta.html');
+    }catch (error){
         console.error('Error', error);
     }
 }

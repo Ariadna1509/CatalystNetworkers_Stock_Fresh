@@ -3,7 +3,7 @@
    ========================================================= */
 
 :root {
-  --rosa-titulo: #c95d6a;
+  --rosa-titulo: #c95d6a; 
   --rosa-borde: #e3a3a8;
   --verde-btn: #c2e99a;
   --amarillo-btn: #edbb52;
@@ -11,45 +11,12 @@
 }
 
 body {
-  position: relative;          /* para ubicar las frutas */
+  position: relative;          
   min-height: 100vh;
   margin: 0;
   background: #fff;
   overflow-x: hidden;
 }
-
-/* ---------- FRUTAS DECORATIVAS ---------- */
-.fruta {
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;        /* no estorban los clics */
-  height: auto;
-}
-
-.fruta-naranja {
-  top: 120px;                  /* justo debajo del menú */
-  left: 8px;
-  width: clamp(90px, 12vw, 150px);
-}
-
-.fruta-aguacate {
-  top: 108px;
-  right: 0;
-  width: clamp(90px, 12vw, 150px);
-}
-
-.fruta-manzana {
-  bottom: 0;
-  left: 24px;
-  width: clamp(80px, 11vw, 140px);
-}
-
-.fruta-arandanos {
-  bottom: 0;
-  right: 0;
-  width: clamp(90px, 12vw, 150px);
-}
-
 /* ---------- CONTENEDOR PRINCIPAL ---------- */ 
 .vta {
   position: relative;

@@ -24,10 +24,7 @@
     cursor: pointer;
 }
 
-/* ---- Scroll en TODAS las páginas ----
-   Antes: html,body { height:100%; overflow:hidden } bloqueaba el scroll.
-   Ahora: la página mide al menos la pantalla y crece si el contenido es más alto.
-   El footer queda al final del contenido (ya no flota encima). */
+/* ---- Scroll en TODAS las páginas ---- */
 html {
     min-height: 100%;
 }

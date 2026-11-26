@@ -23,6 +23,12 @@
 }
 
 /* 2) La página hace scroll y el footer va al final, sin tapar nada */
+/*
+===================================
+            Scroll Bar 
+===================================
+*/
+/*
 html:has(.perfil-wrapper),
 body:has(.perfil-wrapper) { 
     height: auto;
@@ -30,7 +36,12 @@ body:has(.perfil-wrapper) {
     overflow-y: auto;
     overflow-x: hidden;
 }
+*/
+html {
+    min-height: 100%;
+}
 
+/*
 body:has(.perfil-wrapper) .site-footer {
     position: relative;
     bottom: auto;
@@ -39,7 +50,28 @@ body:has(.perfil-wrapper) .site-footer {
     width: 100%;
     margin-top: 0;
 }
-
+*/
+body {
+    background-color: #ffffff;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+.perfil-wrapper:has(> .dash){
+    display: block;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.dash{
+    flex: 0 0 auto;
+    align-self: flex-start;
+    transform: none;
+    padding-bottom: 48px;
+}
 /* 3) Imagen decorativa rota */
 img[alt="Aguacate"] {
     display: none;
@@ -136,4 +168,30 @@ img[alt="Aguacate"] {
         max-width: 640px;
         margin: 0 auto;
     }
+}
+
+.profile-right{
+    -align: center;
+}
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #97c053 #eef5df;
+}
+
+/* Chrome, Edge, Safari */
+html::-webkit-scrollbar {
+    width: 12px;
+}
+html::-webkit-scrollbar-track {
+    background: #eef5df;
+}
+html::-webkit-scrollbar-thumb {
+    background: #97c053;
+    border-radius: 10px;
+    border: 2px solid #eef5df;
+}
+html::-webkit-scrollbar-thumb:hover {
+    background: #5f8f2f;
 }
